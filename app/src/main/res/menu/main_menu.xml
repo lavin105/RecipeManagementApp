@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/add_menu"
+        android:orderInCategory="100"
+        android:title="Add a Personal Recipe"
+        app:showAsAction="never"
+        android:visible="true" />
+    <item
+        android:id="@+id/clear_menu"
+        android:orderInCategory="100"
+        android:title="View your Favorites"
+        app:showAsAction="never"
+        android:visible="true" />
+    <item
+        android:id="@+id/load_menu"
+        android:orderInCategory="100"
+        android:title="Load"
+        app:showAsAction="never"
+        android:visible="true" />
+    <item
+        android:id="@+id/prefrences_menu"
+        android:orderInCategory="100"
+        android:title="Prefrences"
+        app:showAsAction="never"
+        android:visible="true" />
+
+</menu>

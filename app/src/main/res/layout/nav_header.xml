@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@drawable/food"
+    android:backgroundTint="#80FFFFFF"
+    android:backgroundTintMode="src_over"
+
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:textColor="#000000"
+        android:text="Recipes At Your Fingertips"
+        android:textStyle="bold"
+        android:layout_gravity="left"
+        android:layout_marginTop="65dp"
+        android:layout_marginStart="11dp"
+        />
+
+</LinearLayout>
