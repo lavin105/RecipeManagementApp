@@ -9,12 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".RecipeGrid" android:windowSoftInputMode="stateHidden|adjustPan">
+        <activity android:name=".RecipeGrid" android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity android:name=".Login"/>
 
 
-
-
-        </activity>
         <activity android:name=".SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

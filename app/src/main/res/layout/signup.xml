@@ -7,8 +7,8 @@
         android:layout_height="wrap_content"
         android:background="@color/red"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
         android:paddingTop="20dp"
         android:paddingBottom="30dp">
 
@@ -16,16 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Sign Up For RecipeManager"
+            android:text="@string/sign_up_title"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="26sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_marginTop="11dp"
-            android:text="Recipe Manager is the easy way to quickly and easily enter all your favorite recipes and organize them exactly the way you want! Quickly search for your favorite recipes by a simple search. For all you visual learners out there, all our recipes can be  linked to a YouTube video or an official recipe website! Lastly, you have the ability to share all your favorite recipes with anyone you like. Never worry about the unorganized paper recipes laying around your kitchen again, as Recipe Manager provides all the necessary tools to excel in your kitchen!"/>
+            android:text="@string/sign_up_description"/>
     </LinearLayout>
 
 
@@ -40,39 +40,38 @@
 
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:hint="Please enter an email"
-            android:layout_marginTop="15dp"
             android:layout_marginBottom="16dp"
-            android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
-            android:textSize="20sp"
-            />
-
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="@string/please_email"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp" />
 
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:hint="Please enter a password"
             android:layout_marginBottom="14dp"
-            android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:layout_marginTop="4dp"
-            android:textSize="20sp"
-            />
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="@string/please_password"
+            android:inputType="textPassword"
+            android:textSize="20sp" />
         <Button
             android:id="@+id/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="@string/sign_up_button"
             android:textSize="18sp"
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
@@ -86,7 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:textColor="#1880ff"
-            />
+            android:id="@+id/to_login"/>
 
     </LinearLayout>
 

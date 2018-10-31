@@ -2,14 +2,119 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="75dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_title"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:layout_marginTop="5dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@drawable/recipe_manager_logo"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="3dp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/welcome_back"
+                android:textColor="@color/white"
+                android:textSize="19.5sp"
+                android:layout_marginTop="17dp"
+                android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="130dp"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary"></LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/email_input_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="@string/your_email"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp" />
+
+
+        <EditText
+            android:id="@+id/password_input_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="@string/your_password"
+            android:inputType="textPassword"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_in_button"
+            android:textSize="18sp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="17dp"
+            android:textColor="#000000"
+            android:background="@drawable/signup_button_style"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_sign_up"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="#1880ff"
+            android:id="@+id/to_signup"/>
+
+    </LinearLayout>
+
 
 
 </LinearLayout>
+
+
+
+
+
+
+
+
+
+
