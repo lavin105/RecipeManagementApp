@@ -5,58 +5,101 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/red"
         android:orientation="vertical"
-        android:padding="130dp">
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Sign Up For RecipeManager"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="11dp"
+            android:text="Recipe Manager is the easy way to quickly and easily enter all your favorite recipes and organize them exactly the way you want! Quickly search for your favorite recipes by a simple search. For all you visual learners out there, all our recipes can be  linked to a YouTube video or an official recipe website! Lastly, you have the ability to share all your favorite recipes with anyone you like. Never worry about the unorganized paper recipes laying around your kitchen again, as Recipe Manager provides all the necessary tools to excel in your kitchen!"/>
     </LinearLayout>
+
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+
+        <EditText
+            android:id="@+id/editText3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp">
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:hint="email"
-                android:layout_marginBottom="22dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginLeft="12dp"
-                />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="Please enter an email"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:textSize="20sp"
+            />
 
 
 
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="password"
-                android:layout_marginBottom="22dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginLeft="12dp"/>
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button"
-                android:layout_marginRight="12dp"
-                android:layout_marginLeft="12dp"/>
-
-        </LinearLayout>
-
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Please enter a password"
+            android:layout_marginBottom="14dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="4dp"
+            android:textSize="20sp"
+            />
+        <Button
+            android:id="@+id/sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="18sp"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="22dp"
+            android:textColor="#000000"
+            android:background="@drawable/signup_button_style"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/to_log_in"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="#1880ff"
+            />
 
     </LinearLayout>
 
 
 
 </LinearLayout>
+
+
+
+
+
+
+
+
+
+

@@ -39,12 +39,12 @@
 
         <RatingBar
             android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
+            android:layout_width="149dp"
             android:layout_height="42dp"
             android:layout_above="@+id/recipe"
-            android:layout_alignParentStart="true"
-            android:numStars="4"
-            android:rating="2"
+            android:layout_centerHorizontal="true"
+            android:numStars="3"
+            android:rating="1"
             android:scaleX="0.5"
             android:scaleY="0.5"
             android:stepSize="1.0"
