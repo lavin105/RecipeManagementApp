@@ -9,7 +9,7 @@
         app:showAsAction="never"
         android:visible="true" />
     <item
-        android:id="@+id/clear_menu"
+        android:id="@+id/favorites_menu"
         android:orderInCategory="100"
         android:title="View your Favorites"
         app:showAsAction="never"
@@ -17,13 +17,13 @@
     <item
         android:id="@+id/load_menu"
         android:orderInCategory="100"
-        android:title="Load"
+        android:title="Something"
         app:showAsAction="never"
         android:visible="true" />
     <item
         android:id="@+id/prefrences_menu"
         android:orderInCategory="100"
-        android:title="Prefrences"
+        android:title="Logout"
         app:showAsAction="never"
         android:visible="true" />
 
