@@ -1,25 +1,20 @@
 package lavin105.recipemanager;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class RecipeGrid extends AppCompatActivity{
@@ -37,14 +32,10 @@ public class RecipeGrid extends AppCompatActivity{
         nav=findViewById(R.id.nav);
 
 
-        Recipe r1 = new Recipe("test recipe1",1);
-        Recipe r2= new Recipe("test recipe2",1);
-        Recipe r3 = new Recipe("test recipe3",1);
-        Recipe r4 = new Recipe("test recipe4",1);
-        Recipe r5 = new Recipe("test recipe5",1);
-        Recipe r6 = new Recipe("test recipe6",1);
-        Recipe r7 = new Recipe("test recipe7",1);
-        Recipe r8 = new Recipe("test recipe8",1);
+        Recipe r1 = new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",1,1);
+        Recipe r2= new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",2,1);
+        Recipe r3 =new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",3,1);
+        Recipe r4 = new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",2,1);
 
 
 
@@ -53,10 +44,7 @@ public class RecipeGrid extends AppCompatActivity{
         recipeList.add(r2);
         recipeList.add(r3);
         recipeList.add(r4);
-        recipeList.add(r5);
-        recipeList.add(r6);
-        recipeList.add(r7);
-        recipeList.add(r8);
+
 
 
         adapter= new GridAdapter(RecipeGrid.this,recipeList);
@@ -73,9 +61,6 @@ public class RecipeGrid extends AppCompatActivity{
                 return false;
             }
         });
-
-
-
 
     }
     @Override

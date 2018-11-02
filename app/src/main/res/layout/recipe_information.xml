@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/signup_button_style"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="-198dp"
+        android:layout_marginEnd="22dp"
+        app:backgroundTint="#ff4242"
+        app:fabSize="normal"
+        android:src="@drawable/ic_youtube"
+       />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="22dp"
+        app:backgroundTint="#86d983"
+        app:fabSize="normal"
+        android:src="@drawable/ic_web"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="22dp"
+        app:backgroundTint="#aefffc"
+        app:fabSize="normal"
+        android:src="@drawable/ic_share"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recipe Title"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:id="@+id/recipe_name"/>
+    <RadioGroup
+        android:checkedButton="@+id/instructions"
+        android:id="@+id/toggle"
+        android:layout_width="390dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/red_out_line"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:id="@+id/instructions"
+            android:background="@drawable/toggle_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Cooking Instructions"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:id="@+id/ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="Ingredients"
+            android:textColor="@color/white" />
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginTop="22dp"
+        android:textColor="@color/black"
+        android:text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati."
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:id="@+id/instruction_description"
+        android:scrollbars = "vertical"
+        />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginTop="-280dp"
+        android:padding="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:id="@+id/ingredients_list"
+        android:visibility="invisible"
+        />
+
+</LinearLayout>

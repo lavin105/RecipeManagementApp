@@ -12,6 +12,7 @@
         <activity android:name=".RecipeGrid" android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <activity android:name=".Login"/>
+        <activity android:name=".RecipeInformation"/>
 
 
         <activity android:name=".SignUp">
