@@ -47,8 +47,7 @@
             android:scaleX="0.7"
             android:scaleY="0.7"
             android:stepSize="1.0"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
+            android:isIndicator="true"
             />
 
 

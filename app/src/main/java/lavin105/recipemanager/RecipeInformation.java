@@ -22,6 +22,7 @@ public class RecipeInformation extends Activity {
     ArrayList<String> theIngredients;
     ArrayAdapter<String> adapter;
     String[] ingred;
+    String ing;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,8 @@ public class RecipeInformation extends Activity {
         recipeName=findViewById(R.id.recipe_name);
         recipeInstructions=findViewById(R.id.instruction_description);
         ingredientsList=findViewById(R.id.ingredients_list);
-        ingred=new String[]{"ingredient1","ingredient2","ingredient3","ingredient4"};
+        ing="ingredient1,ingredient2,ingredient3,ingredient4";
+        ingred=ing.split(",");
         theIngredients= new ArrayList<String>(Arrays.asList(ingred));
         adapter= new ArrayAdapter<>(RecipeInformation.this,android.R.layout.simple_list_item_1,theIngredients);
         ingredientsList.setAdapter(adapter);
