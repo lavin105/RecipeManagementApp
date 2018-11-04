@@ -8,12 +8,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 import java.util.ArrayList;
 
@@ -61,7 +63,36 @@ public class RecipeGrid extends AppCompatActivity{
                 return false;
             }
         });
-
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(RecipeGrid.this,RecipeInformation.class);
+                startActivity(i);
+            }
+        });
+        grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                PopupMenu menu = new PopupMenu(getApplicationContext(),view);
+                menu.getMenuInflater().inflate(R.menu.details_menu, menu.getMenu());
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.menu_edit:
+                                System.out.println("edit");
+                                break;
+                            case R.id.menu_delete:
+                                System.out.println("delete");
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                menu.show();
+                return false;
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

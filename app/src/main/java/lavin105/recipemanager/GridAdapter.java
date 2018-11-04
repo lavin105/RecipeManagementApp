@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -55,13 +56,6 @@ public class GridAdapter extends BaseAdapter {
         recipe.setText(r.get(position).getName());
         theRating.setRating(r.get(position).getRating());
 
-        gridview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context,RecipeInformation.class);
-                context.startActivity(i);
-            }
-        });
 
 
 

@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/orange</item>
         <item name="navigationViewStyle">@style/Widget.Design.NavigationView</item>
         <item name="floatingActionButtonStyle">@style/Widget.Design.FloatingActionButton</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+    </style>
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@android:color/white</item>
     </style>
 
 </resources>
