@@ -12,12 +12,14 @@
         <GridView
             android:id="@+id/recipe_grid"
             android:layout_width="match_parent"
-            android:layout_height="605dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:horizontalSpacing="1dp"
-            android:numColumns="2"
-            android:verticalSpacing="10dp" />
+            android:numColumns="auto_fit"
+            android:verticalSpacing="10dp"
+            android:columnWidth="180dp"
+            />
 
     </RelativeLayout>
     <android.support.design.widget.NavigationView

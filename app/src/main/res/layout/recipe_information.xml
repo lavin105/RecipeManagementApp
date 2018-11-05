@@ -22,7 +22,7 @@
         android:layout_marginEnd="22dp"
         app:backgroundTint="#ff4242"
         app:fabSize="normal"
-        android:src="@drawable/ic_youtube"
+        android:src="@drawable/ic_play"
         android:id="@+id/youtube"
        />
     <android.support.design.widget.FloatingActionButton
