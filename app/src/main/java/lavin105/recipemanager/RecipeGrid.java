@@ -26,6 +26,8 @@ public class RecipeGrid extends AppCompatActivity{
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView nav;
+    SearchView search;
+    ArrayList<Recipe> filteredRecipeList;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,10 @@ public class RecipeGrid extends AppCompatActivity{
         nav=findViewById(R.id.nav);
 
 
-        Recipe r1 = new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",1,1);
-        Recipe r2= new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",2,1);
-        Recipe r3 =new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",3,1);
-        Recipe r4 = new Recipe("test recipe1","www.taco.com","www.test.com","www.","test","test,test",2,1);
-
-
-
+        Recipe r1 = new Recipe("test recipe1","www.taco.com","www.test.com","www.","test1","test1,test1",1,1);
+        Recipe r2= new Recipe("test recipe2","www.taco.com","www.test.com","www.","test2","test2,test2",2,1);
+        Recipe r3 =new Recipe("test recipe3","www.taco.com","www.test.com","www.","test3","test3,test3",3,1);
+        Recipe r4 = new Recipe("test recipe4","www.taco.com","www.test.com","www.","test4","test4,test4",2,1);
         recipeList= new ArrayList<>();
         recipeList.add(r1);
         recipeList.add(r2);
@@ -66,8 +65,18 @@ public class RecipeGrid extends AppCompatActivity{
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(RecipeGrid.this,RecipeInformation.class);
-                startActivity(i);
+                if(search.getQuery().toString().equals("")){
+                    Intent i = new Intent(RecipeGrid.this,RecipeInformation.class);
+                    i.putExtra("recipe",recipeList.get(position));
+                    startActivity(i);
+
+                }else{
+                    Intent i = new Intent(RecipeGrid.this,RecipeInformation.class);
+                    i.putExtra("recipe",filteredRecipeList.get(position));
+                    startActivity(i);
+                }
+
+
             }
         });
         grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -99,7 +108,7 @@ public class RecipeGrid extends AppCompatActivity{
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.search,menu);
         MenuItem item = menu.findItem(R.id.menu_search);
-        SearchView search = (SearchView) item.getActionView();
+        search = (SearchView) item.getActionView();
 
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -135,7 +144,7 @@ public class RecipeGrid extends AppCompatActivity{
     }
 
     private void filterList(String text){
-        ArrayList<Recipe> filteredRecipeList=new ArrayList<>();
+        filteredRecipeList=new ArrayList<>();
 
         for(Recipe r :recipeList){
             if(r.getName().toLowerCase().contains(text.toLowerCase())){

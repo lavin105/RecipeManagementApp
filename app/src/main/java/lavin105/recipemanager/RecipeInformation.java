@@ -1,6 +1,7 @@
 package lavin105.recipemanager;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -29,6 +30,7 @@ public class RecipeInformation extends Activity {
     RatingBar theRating;
     ImageView recipePicture;
     FloatingActionButton toYoutube, toWeb, toShare;
+    Recipe theRecipe;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +48,12 @@ public class RecipeInformation extends Activity {
 
         //TODO
         //Add getIntent here
-
-
-
-
-
-
-
-        ing="ingredient1,ingredient2,ingredient3,ingredient4";
+        Intent fromRecipeGrid = getIntent();
+        theRecipe=(Recipe)fromRecipeGrid.getSerializableExtra("recipe");
+        ing=theRecipe.getIngredients();
+        theRating.setRating(theRecipe.getRating());
+        recipeName.setText(theRecipe.getName());
+        recipeInstructions.setText(theRecipe.getInstructions());
         ingred=ing.split(",");
         theIngredients= new ArrayList<String>(Arrays.asList(ingred));
         adapter= new ArrayAdapter<>(RecipeInformation.this,android.R.layout.simple_list_item_1,theIngredients);
