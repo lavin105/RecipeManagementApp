@@ -16,6 +16,8 @@ import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -54,6 +56,19 @@ public class RecipeInformation extends Activity {
         theRating.setRating(theRecipe.getRating());
         recipeName.setText(theRecipe.getName());
         recipeInstructions.setText(theRecipe.getInstructions());
+
+        if(theRecipe.getImage_url().equals("")){
+            recipePicture.setImageResource(R.drawable.recipe_manager_logo);
+        }else {
+            Picasso.get()
+                    .load(theRecipe.getImage_url())
+                    .error(R.drawable.recipe_manager_logo)
+                    .fit()
+                    .into(recipePicture);
+        }
+
+
+
         ingred=ing.split(",");
         theIngredients= new ArrayList<String>(Arrays.asList(ingred));
         adapter= new ArrayAdapter<>(RecipeInformation.this,android.R.layout.simple_list_item_1,theIngredients);

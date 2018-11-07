@@ -1,17 +1,15 @@
 package lavin105.recipemanager;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -52,9 +50,20 @@ public class GridAdapter extends BaseAdapter {
         ImageView picture = (ImageView) gridview.findViewById(R.id.icon);
         TextView recipe=(TextView) gridview.findViewById(R.id.recipe);
         RatingBar theRating=(RatingBar) gridview.findViewById(R.id.ratingBar);
-        picture.setImageResource(R.mipmap.ic_launcher);
         recipe.setText(r.get(position).getName());
         theRating.setRating(r.get(position).getRating());
+
+        if(r.get(position).getImage_url().equals("")){
+            picture.setImageResource(R.drawable.recipe_manager_logo);
+        }else{
+
+                Picasso.get()
+                        .load(r.get(position).getImage_url())
+                        .error(R.drawable.recipe_manager_logo)
+                        .fit()
+                        .into(picture);
+
+        }
 
 
 
