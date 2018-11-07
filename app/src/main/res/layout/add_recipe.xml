@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Recipe Name:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Recipe Name Here"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="18sp"
+            android:id="@+id/name_of_recipe"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Image Link:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            >
+            <EditText
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:hint="Enter Link Here"
+                android:textSize="18sp"
+                android:id="@+id/image_of_recipe">
+            </EditText>
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#d580ff"
+                app:fabSize="normal"
+                android:src="@drawable/ic_camera"
+                android:id="@+id/camera_button"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Web Link:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            >
+            <EditText
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:hint="Enter a Website Here (optional)"
+                android:textSize="18sp"
+                android:id="@+id/weblink_of_recipe">
+            </EditText>
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#86d983"
+                app:fabSize="normal"
+                android:src="@drawable/ic_web"
+                android:id="@+id/web_button"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="YouTube Link:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            >
+            <EditText
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:hint="Enter Youtube Link Here (optional)"
+                android:textSize="18sp"
+                android:id="@+id/youtubelink_of_recipe">
+            </EditText>
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#ff4242"
+                app:fabSize="normal"
+                android:src="@drawable/ic_youtube"
+                android:id="@+id/youtube_button"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Cooking Instructions:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Enter the cooking instructions"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="18sp"
+            android:inputType="textMultiLine"
+            android:gravity="top|left"
+            android:id="@+id/cooking_instructions_of_recipe"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Ingredients:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            >
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:hint="Enter an Ingredient"
+            android:textSize="18sp"
+            android:id="@+id/ingredients_of_recipe">
+        </EditText>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/signup_button_style"
+                android:text="ADD"
+                android:backgroundTint="@color/orange"
+                android:id="@+id/add_ingredient">
+            </Button>
+        </LinearLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="6dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/list_of_ingredients"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Recipe"
+            android:background="@drawable/signup_button_style"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="22dp"
+            android:textSize="23dp"
+            android:layout_marginTop="22dp"
+            android:id="@+id/add_recipe"/>
+    </LinearLayout>
+</ScrollView>
+
