@@ -6,8 +6,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="280dp"
-        android:layout_height="200dp"
+        android:layout_width="270dp"
+        android:layout_height="190dp"
         android:layout_gravity="center"
         android:layout_marginEnd="40dp"
         android:layout_marginTop="22dp"
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_marginTop="-200dp"
+        android:layout_marginTop="-195dp"
         android:layout_marginEnd="22dp"
         app:backgroundTint="#ff4242"
         app:fabSize="normal"
@@ -52,7 +52,7 @@
         android:textSize="30sp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:id="@+id/recipe_name"/>
     <RatingBar
         android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
         android:layout_marginRight="50dp"
         android:background="@drawable/red_out_line"
         android:orientation="horizontal"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="-4dp"
         android:layout_gravity="center"
         >
 
@@ -110,7 +110,7 @@
         android:layout_height="280dp"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:textColor="@color/black"
         android:text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati."
         android:paddingTop="5dp"
@@ -127,7 +127,7 @@
         android:layout_marginTop="-280dp"
         android:paddingTop="5dp"
         android:paddingEnd="12dp"
-        android:paddingStart="12dp"
+        android:paddingStart="7dp"
         android:paddingBottom="12dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"

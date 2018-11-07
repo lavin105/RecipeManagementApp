@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecipeManager</string>
+    <string name="app_name">Recipe Manager</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="to_log_in"><u>Already have an account? Login here</u></string>

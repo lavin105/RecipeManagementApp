@@ -13,7 +13,7 @@
         <activity android:name=".RecipeGrid" android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <activity android:name=".Login"/>
-        <activity android:name=".RecipeInformation"/>
+        <activity android:name=".RecipeInformation" android:parentActivityName=".RecipeGrid" android:theme="@style/AppTheme"/>
 
 
         <activity android:name=".SignUp">

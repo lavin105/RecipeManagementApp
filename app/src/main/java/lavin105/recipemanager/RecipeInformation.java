@@ -1,10 +1,12 @@
 package lavin105.recipemanager;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Adapter;
@@ -21,7 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RecipeInformation extends Activity {
+public class RecipeInformation extends AppCompatActivity {
     RadioGroup switchView;
     TextView recipeName, recipeInstructions;
     ListView ingredientsList;
@@ -47,6 +49,9 @@ public class RecipeInformation extends Activity {
         toShare=findViewById(R.id.share);
         toWeb=findViewById(R.id.web);
         toYoutube=findViewById(R.id.youtube);
+        getSupportActionBar().setTitle("Recipe Information");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         //TODO
         //Add getIntent here
