@@ -29,6 +29,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="22sp"
+            android:text="Rating:"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="3"
+            android:stepSize="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:id="@+id/recipe_rating"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
             android:text="Image Link:"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
@@ -181,6 +199,7 @@
             android:layout_marginEnd="12dp"
             android:layout_marginTop="4dp"
             android:id="@+id/list_of_ingredients"
+            android:nestedScrollingEnabled="true"
             />
 
         <Button
@@ -191,8 +210,9 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="22dp"
             android:textSize="23dp"
-            android:layout_marginTop="22dp"
-            android:id="@+id/add_recipe"/>
+            android:layout_marginTop="12dp"
+            android:id="@+id/add_recipe"
+            android:layout_marginBottom="12dp"/>
     </LinearLayout>
 </ScrollView>
 

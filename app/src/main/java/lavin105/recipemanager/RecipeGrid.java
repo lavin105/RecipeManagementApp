@@ -28,6 +28,8 @@ public class RecipeGrid extends AppCompatActivity{
     NavigationView nav;
     SearchView search;
     ArrayList<Recipe> filteredRecipeList;
+    int REQUEST_CODE_ADD_RECIPE=1;
+    int REQUEST_CODE_RECIPE_INFO=2;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,8 @@ public class RecipeGrid extends AppCompatActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id=menuItem.getItemId();
                 if(id==R.id.add_menu){
-                    System.out.println("Clicked");
+                    Intent toAdd=new Intent(RecipeGrid.this, AddRecipe.class);
+                    startActivityForResult(toAdd,REQUEST_CODE_ADD_RECIPE);
                 }
                 return false;
             }
@@ -68,12 +71,12 @@ public class RecipeGrid extends AppCompatActivity{
                 if(search.getQuery().toString().equals("")){
                     Intent i = new Intent(RecipeGrid.this,RecipeInformation.class);
                     i.putExtra("recipe",recipeList.get(position));
-                    startActivity(i);
+                    startActivityForResult(i,REQUEST_CODE_RECIPE_INFO);
 
                 }else{
                     Intent i = new Intent(RecipeGrid.this,RecipeInformation.class);
                     i.putExtra("recipe",filteredRecipeList.get(position));
-                    startActivity(i);
+                    startActivityForResult(i,REQUEST_CODE_RECIPE_INFO);
                 }
 
 
@@ -156,5 +159,19 @@ public class RecipeGrid extends AppCompatActivity{
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_CODE_ADD_RECIPE){
+            if (resultCode==RESULT_OK){
+                Recipe addedRecipe=(Recipe)data.getSerializableExtra("recipe");
+                recipeList.add(addedRecipe);
+                adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                grid.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
+            }
+        }
+
+    }
 }

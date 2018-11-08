@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RecipeInformation extends AppCompatActivity {
-    RadioGroup switchView;
+    RadioGroup switchView2;
     TextView recipeName, recipeInstructions;
     ListView ingredientsList;
     ArrayList<String> theIngredients;
@@ -39,7 +39,6 @@ public class RecipeInformation extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_information);
-        switchView=findViewById(R.id.toggle);
         recipeName=findViewById(R.id.recipe_name);
         recipeInstructions=findViewById(R.id.instruction_description);
         ingredientsList=findViewById(R.id.ingredients_list);
@@ -49,8 +48,26 @@ public class RecipeInformation extends AppCompatActivity {
         toShare=findViewById(R.id.share);
         toWeb=findViewById(R.id.web);
         toYoutube=findViewById(R.id.youtube);
+        switchView2=findViewById(R.id.toggle2);
         getSupportActionBar().setTitle("Recipe Information");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        switchView2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                System.out.println(checkedId);
+                if (checkedId== 2131230814){
+                    System.out.println(checkedId);
+                    ingredientsList.setVisibility(View.INVISIBLE);
+                    recipeInstructions.setVisibility(View.VISIBLE);
+                }if(checkedId== 2131230810){
+                    System.out.println(checkedId);
+                    ingredientsList.setVisibility(View.VISIBLE);
+                    recipeInstructions.setVisibility(View.INVISIBLE);
+
+                }
+            }
+        });
 
 
         //TODO
@@ -81,22 +98,7 @@ public class RecipeInformation extends AppCompatActivity {
         ingredientsList.setVisibility(View.INVISIBLE);
         recipeInstructions.setVisibility(View.VISIBLE);
         recipeInstructions.setMovementMethod(new ScrollingMovementMethod());
-
-        switchView.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-              if (checkedId== 2131230808){
-                  System.out.println(checkedId);
-                  ingredientsList.setVisibility(View.INVISIBLE);
-                  recipeInstructions.setVisibility(View.VISIBLE);
-              }if(checkedId== 2131230805){
-                  System.out.println(checkedId);
-                  ingredientsList.setVisibility(View.VISIBLE);
-                  recipeInstructions.setVisibility(View.INVISIBLE);
-
-              }
-            }
-        });
+        System.out.println(ing);
 
         toYoutube.setOnClickListener(new View.OnClickListener() {
             @Override

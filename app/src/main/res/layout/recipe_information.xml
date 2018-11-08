@@ -65,8 +65,8 @@
         android:isIndicator="true"
         android:id="@+id/the_recipe_rating"/>
     <RadioGroup
-        android:checkedButton="@+id/instructions"
-        android:id="@+id/toggle"
+        android:checkedButton="@+id/instructions2"
+        android:id="@+id/toggle2"
         android:layout_width="390dp"
         android:layout_height="30dp"
         android:layout_marginLeft="50dp"
@@ -81,7 +81,7 @@
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp"
             android:layout_marginLeft="1dp"
-            android:id="@+id/instructions"
+            android:id="@+id/instructions2"
             android:background="@drawable/toggle_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -95,7 +95,7 @@
             android:layout_marginRight="1dp"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp"
-            android:id="@+id/ingredients"
+            android:id="@+id/ingredients2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
