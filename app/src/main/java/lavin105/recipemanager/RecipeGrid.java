@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuPopupHelper;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,6 +64,18 @@ public class RecipeGrid extends AppCompatActivity{
                     Intent toAdd=new Intent(RecipeGrid.this, AddRecipe.class);
                     startActivityForResult(toAdd,REQUEST_CODE_ADD_RECIPE);
                 }
+                if(id==R.id.favorites_menu){
+                    System.out.println("Favorites");
+                }
+                if(id==R.id.logout_menu){
+                    System.out.println("Logout");
+
+                }
+                if(id==R.id.delete_account_menu){
+                    System.out.println("Delete Account");
+
+                }
+                drawer.closeDrawer(GravityCompat.START);
                 return false;
             }
         });
@@ -101,7 +115,9 @@ public class RecipeGrid extends AppCompatActivity{
                         return false;
                     }
                 });
+
                 menu.show();
+                
                 return false;
             }
         });

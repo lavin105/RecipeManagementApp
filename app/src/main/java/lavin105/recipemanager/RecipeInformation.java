@@ -56,11 +56,11 @@ public class RecipeInformation extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 System.out.println(checkedId);
-                if (checkedId== 2131230814){
+                if (checkedId== R.id.instructions2){
                     System.out.println(checkedId);
                     ingredientsList.setVisibility(View.INVISIBLE);
                     recipeInstructions.setVisibility(View.VISIBLE);
-                }if(checkedId== 2131230810){
+                }if(checkedId== R.id.ingredients2){
                     System.out.println(checkedId);
                     ingredientsList.setVisibility(View.VISIBLE);
                     recipeInstructions.setVisibility(View.INVISIBLE);
@@ -68,6 +68,7 @@ public class RecipeInformation extends AppCompatActivity {
                 }
             }
         });
+
 
 
         //TODO

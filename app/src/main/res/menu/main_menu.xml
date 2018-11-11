@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:orderInCategory="100"
+        android:title="What to do?"
+        app:showAsAction="never"
+        android:visible="true"
+        >
+        <menu><item
+            android:id="@+id/add_menu"
+            android:orderInCategory="100"
+            android:title="Add a Personal Recipe"
+            app:showAsAction="never"
+            android:visible="true"
+            android:icon="@drawable/ic_add"
+            />
+            <item
+                android:id="@+id/favorites_menu"
+                android:orderInCategory="100"
+                android:title="View your Favorites"
+                app:showAsAction="never"
+                android:visible="true"
+                android:icon="@drawable/ic_star"/></menu>
+    </item>
 
     <item
-        android:id="@+id/add_menu"
         android:orderInCategory="100"
-        android:title="Add a Personal Recipe"
+        android:title="Your Account"
         app:showAsAction="never"
-        android:visible="true" />
-    <item
-        android:id="@+id/favorites_menu"
-        android:orderInCategory="100"
-        android:title="View your Favorites"
-        app:showAsAction="never"
-        android:visible="true" />
-    <item
-        android:id="@+id/load_menu"
-        android:orderInCategory="100"
-        android:title="Something"
-        app:showAsAction="never"
-        android:visible="true" />
-    <item
-        android:id="@+id/prefrences_menu"
-        android:orderInCategory="100"
-        android:title="Logout"
-        app:showAsAction="never"
-        android:visible="true" />
+        android:visible="true" >
+        <menu>
+            <item
+                android:id="@+id/logout_menu"
+                android:orderInCategory="100"
+                android:title="Logout"
+                app:showAsAction="never"
+                android:visible="true"
+                android:icon="@drawable/ic_logout"/>
+            <item
+                android:id="@+id/delete_account_menu"
+                android:orderInCategory="100"
+                android:title="Delete Account"
+                app:showAsAction="never"
+                android:visible="true"
+                android:icon="@drawable/ic_delete_account"/>
+        </menu>
+    </item>
+
 
 </menu>

@@ -97,6 +97,8 @@ public class AddRecipe extends AppCompatActivity {
                     csvBuilder.append(SEPARATOR);
                 }
                 String csv = csvBuilder.toString();
+                //TODO
+                //Handle no ingredients
                 csv = csv.substring(0, csv.length() - SEPARATOR.length());
                 String ingredients=csv;
                 System.out.println(ingredients);
