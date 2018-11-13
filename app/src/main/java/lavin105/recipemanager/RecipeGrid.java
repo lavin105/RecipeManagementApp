@@ -117,7 +117,7 @@ public class RecipeGrid extends AppCompatActivity{
                 });
 
                 menu.show();
-                
+
                 return false;
             }
         });

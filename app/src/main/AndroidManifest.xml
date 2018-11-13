@@ -14,7 +14,7 @@
 
         <activity android:name=".Login"/>
         <activity android:name=".RecipeInformation" android:parentActivityName=".RecipeGrid" android:theme="@style/AppTheme"/>
-        <activity android:name=".AddRecipe" android:theme="@style/AppTheme" android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".AddRecipe" android:theme="@style/AppTheme"/>
 
         <activity android:name=".SignUp">
             <intent-filter>
