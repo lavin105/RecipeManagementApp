@@ -14,11 +14,20 @@
     <string name="your_password"> Please enter your password</string>
     <string name="welcome_back">Welcome back to Recipe Manager! Please login below to continue using this app.</string>
     <string name="login_title">Login to Recipe Manager</string>
-
-
-
-
-
-
-
+    <string name="recipe_name">Recipe Name:</string>
+    <string name="enter_name">Enter Recipe Name Here</string>
+    <string name="rating">Rating:</string>
+    <string name="image_link">Image Link:</string>
+    <string name="image_link_here">Enter Image Link Here:</string>
+    <string name="web_link">Web Link:</string>
+    <string name="web_link_here">Enter a Website Link Here (optional)</string>
+    <string name="youtube_link">Youtube Link:</string>
+    <string name="youtube_link_here">Enter a Youtube Link Here (optional)</string>
+    <string name="cooking_instructions">Coking Instructions:</string>
+    <string name="cooking_instructions_here">Enter the cooking instructions here</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="ingredients_here">Enter an ingredient here</string>
+    <string name="add_ingredient">ADD</string>
+    <string name="add_recipe">Add Recipe</string>
+    <string name="edit_recipe">Edit Recipe</string>
 </resources>

@@ -32,6 +32,7 @@ public class RecipeGrid extends AppCompatActivity{
     ArrayList<Recipe> filteredRecipeList;
     int REQUEST_CODE_ADD_RECIPE=1;
     int REQUEST_CODE_RECIPE_INFO=2;
+    int REQUEST_CODE_EDIT_RECIPE=3;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +99,7 @@ public class RecipeGrid extends AppCompatActivity{
         });
         grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 PopupMenu menu = new PopupMenu(getApplicationContext(),view);
                 menu.getMenuInflater().inflate(R.menu.details_menu, menu.getMenu());
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -106,7 +107,16 @@ public class RecipeGrid extends AppCompatActivity{
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.menu_edit:
-                                System.out.println("edit");
+                                if(search.getQuery().toString().equals("")){
+                                    Intent i = new Intent(RecipeGrid.this,EditRecipe.class);
+                                    i.putExtra("recipe",recipeList.get(position));
+                                    startActivityForResult(i,REQUEST_CODE_EDIT_RECIPE);
+
+                                }else{
+                                    Intent i = new Intent(RecipeGrid.this,EditRecipe.class);
+                                    i.putExtra("recipe",filteredRecipeList.get(position));
+                                    startActivityForResult(i,REQUEST_CODE_EDIT_RECIPE);
+                                }
                                 break;
                             case R.id.menu_delete:
                                 System.out.println("delete");
@@ -186,6 +196,11 @@ public class RecipeGrid extends AppCompatActivity{
                 grid.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
+            }
+        }
+        if (requestCode==REQUEST_CODE_EDIT_RECIPE){
+            if(resultCode==RESULT_OK){
+                System.out.println("edited");
             }
         }
 
