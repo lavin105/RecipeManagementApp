@@ -19,6 +19,7 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class EditRecipe extends AppCompatActivity {
     EditText recipeName,imageLink,webLink,youtubeLink,cookingInstructions,theIngredient;
@@ -52,6 +53,22 @@ public class EditRecipe extends AppCompatActivity {
         ingredientsArrayList=new ArrayList<>();
         adapter=new ArrayAdapter<>(EditRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
         ingredinetsList.setAdapter(adapter);
+
+
+        Intent fromGrid = getIntent();
+        Recipe recipe=(Recipe)fromGrid.getSerializableExtra("recipe");
+        recipeName.setText(recipe.getName());
+        recipeRating.setRating(recipe.getRating());
+        imageLink.setText(recipe.getImage_url());
+        webLink.setText(recipe.getWeb_url());
+        youtubeLink.setText(recipe.getYoutube_url());
+        cookingInstructions.setText(recipe.getInstructions());
+        String ing=recipe.getIngredients();
+        String[] ingred=ing.split(",");
+        ingredientsArrayList=new ArrayList<>(Arrays.asList(ingred));
+        adapter=new ArrayAdapter<>(EditRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
+        ingredinetsList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         //------------------------------------------------------------------------------
 
