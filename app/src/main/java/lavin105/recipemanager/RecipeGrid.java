@@ -30,6 +30,7 @@ public class RecipeGrid extends AppCompatActivity{
     NavigationView nav;
     SearchView search;
     ArrayList<Recipe> filteredRecipeList;
+    int specialPosition;
     int REQUEST_CODE_ADD_RECIPE=1;
     int REQUEST_CODE_RECIPE_INFO=2;
     int REQUEST_CODE_EDIT_RECIPE=3;
@@ -109,12 +110,23 @@ public class RecipeGrid extends AppCompatActivity{
                             case R.id.menu_edit:
                                 if(search.getQuery().toString().equals("")){
                                     Intent i = new Intent(RecipeGrid.this,EditRecipe.class);
+                                    i.putExtra("index",Integer.toString(position));
                                     i.putExtra("recipe",recipeList.get(position));
                                     startActivityForResult(i,REQUEST_CODE_EDIT_RECIPE);
 
                                 }else{
                                     Intent i = new Intent(RecipeGrid.this,EditRecipe.class);
-                                    i.putExtra("recipe",filteredRecipeList.get(position));
+
+                                    for(int x=0; x<recipeList.size();x++){
+                                        for(int y=0;y<filteredRecipeList.size();y++){
+                                            if (recipeList.get(x).getInstructions()==filteredRecipeList.get(y).getInstructions()){
+                                                specialPosition=x;
+                                            }
+                                        }
+                                    }
+
+                                    i.putExtra("recipe",recipeList.get(specialPosition));
+                                    i.putExtra("index",Integer.toString(specialPosition));
                                     startActivityForResult(i,REQUEST_CODE_EDIT_RECIPE);
                                 }
                                 break;
@@ -201,6 +213,13 @@ public class RecipeGrid extends AppCompatActivity{
         if (requestCode==REQUEST_CODE_EDIT_RECIPE){
             if(resultCode==RESULT_OK){
                 System.out.println("edited");
+                Recipe editedRecipe=(Recipe)data.getSerializableExtra("recipe");
+                String idx=data.getStringExtra("index");
+                recipeList.set(Integer.parseInt(idx),editedRecipe);
+                adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                grid.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
             }
         }
 

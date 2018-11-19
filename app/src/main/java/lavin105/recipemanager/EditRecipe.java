@@ -30,6 +30,7 @@ public class EditRecipe extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     private static final String SEPARATOR = ",";
     RatingBar recipeRating;
+    String position;
 
 
     @Override
@@ -57,6 +58,7 @@ public class EditRecipe extends AppCompatActivity {
 
         Intent fromGrid = getIntent();
         Recipe recipe=(Recipe)fromGrid.getSerializableExtra("recipe");
+        position=fromGrid.getStringExtra("index");
         recipeName.setText(recipe.getName());
         recipeRating.setRating(recipe.getRating());
         imageLink.setText(recipe.getImage_url());
@@ -207,6 +209,7 @@ public class EditRecipe extends AppCompatActivity {
                     Recipe r = new Recipe(name,picture,youtube,web,instructions,ingredients,rating,1);
                     Intent giveRecipe = new Intent();
                     giveRecipe.putExtra("recipe",r);
+                    giveRecipe.putExtra("index",position);
                     setResult(RESULT_OK,giveRecipe);
                     finish();
 
