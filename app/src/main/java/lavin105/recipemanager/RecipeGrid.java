@@ -1,5 +1,7 @@
 package lavin105.recipemanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
@@ -52,7 +55,27 @@ public class RecipeGrid extends AppCompatActivity{
         recipeList.add(r3);
         recipeList.add(r4);
 
+        if(recipeList.isEmpty()){
+            AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
+            alert2.setTitle("You have no recipes!");
+            alert2.setMessage("Would you like to add one now?");
+            alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                   Intent addIfEmpty=new Intent(RecipeGrid.this,AddRecipe.class);
+                   startActivityForResult(addIfEmpty,REQUEST_CODE_ADD_RECIPE);
+                }
+            });
+            alert2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
 
+            final AlertDialog theAlert2=alert2.create();
+            theAlert2.show();
+        }
 
         adapter= new GridAdapter(RecipeGrid.this,recipeList);
         grid.setAdapter(adapter);
@@ -131,7 +154,26 @@ public class RecipeGrid extends AppCompatActivity{
                                 }
                                 break;
                             case R.id.menu_delete:
-                                System.out.println("delete");
+                                if(search.getQuery().toString().equals("")){
+                                    recipeList.remove(position);
+                                    adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                                    grid.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+
+                                }else{
+                                    for(int x=0; x<recipeList.size();x++){
+                                        for(int y=0;y<filteredRecipeList.size();y++){
+                                            if (recipeList.get(x).getInstructions()==filteredRecipeList.get(y).getInstructions()){
+                                                specialPosition=x;
+                                            }
+                                        }
+                                    }
+
+                                    recipeList.remove(specialPosition);
+                                    filteredRecipeList.remove(position);
+                                    adapter.notifyDataSetChanged();
+
+                                }
                                 break;
                         }
                         return false;

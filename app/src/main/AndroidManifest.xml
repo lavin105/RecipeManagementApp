@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <activity android:name=".RecipeGrid" android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".RecipeGrid" android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <activity android:name=".Login"/>
-        <activity android:name=".RecipeInformation" android:parentActivityName=".RecipeGrid" android:theme="@style/AppTheme"/>
-        <activity android:name=".AddRecipe" android:theme="@style/AppTheme"/>
+        <activity android:name=".RecipeInformation" android:theme="@style/AppTheme"/>
+        <activity android:name=".AddRecipe" android:theme="@style/AppTheme" android:windowSoftInputMode="stateHidden|adjustResize" android:configChanges="keyboardHidden|orientation|screenSize"/>
 
         <activity android:name=".SignUp">
             <intent-filter>
@@ -23,7 +23,7 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".EditRecipe"/>
+        <activity android:name=".EditRecipe" android:windowSoftInputMode="stateHidden|adjustResize" android:configChanges="keyboardHidden|orientation|screenSize"/>
 
     </application>
 

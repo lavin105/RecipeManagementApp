@@ -50,8 +50,6 @@ public class RecipeInformation extends AppCompatActivity {
         toYoutube=findViewById(R.id.youtube);
         switchView2=findViewById(R.id.toggle2);
         getSupportActionBar().setTitle("Recipe Information");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         switchView2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

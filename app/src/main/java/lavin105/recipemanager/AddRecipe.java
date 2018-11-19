@@ -52,6 +52,8 @@ public class AddRecipe extends AppCompatActivity {
         ingredientsArrayList=new ArrayList<>();
         adapter=new ArrayAdapter<>(AddRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
         ingredinetsList.setAdapter(adapter);
+        getSupportActionBar().setTitle("Add a Recipe");
+
 
         //------------------------------------------------------------------------------
 
@@ -95,12 +97,12 @@ public class AddRecipe extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 PopupMenu menu = new PopupMenu(getApplicationContext(),view);
-                menu.getMenuInflater().inflate(R.menu.details_menu, menu.getMenu());
+                menu.getMenuInflater().inflate(R.menu.alter_ingredients, menu.getMenu());
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
-                            case R.id.menu_edit:
+                            case R.id.menu_edit_ingredient:
                                 AlertDialog.Builder alert= new AlertDialog.Builder(AddRecipe.this);
                                 alert.setTitle("Edit An Ingredient");
                                 alert.setMessage("Please enter the new ingredient.");
@@ -126,7 +128,7 @@ public class AddRecipe extends AppCompatActivity {
                                 final AlertDialog theAlert=alert.create();
                                 theAlert.show();
                                 break;
-                            case R.id.menu_delete:
+                            case R.id.menu_delete_ingredient:
                                 AlertDialog.Builder alert2= new AlertDialog.Builder(AddRecipe.this);
                                 alert2.setTitle("Delete An Ingredient");
                                 alert2.setMessage("Are you sure you want to delete this ingredient?");

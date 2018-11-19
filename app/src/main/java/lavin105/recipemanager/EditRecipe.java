@@ -54,6 +54,8 @@ public class EditRecipe extends AppCompatActivity {
         ingredientsArrayList=new ArrayList<>();
         adapter=new ArrayAdapter<>(EditRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
         ingredinetsList.setAdapter(adapter);
+        getSupportActionBar().setTitle("Edit a Recipe");
+
 
 
         Intent fromGrid = getIntent();
@@ -110,12 +112,12 @@ public class EditRecipe extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 PopupMenu menu = new PopupMenu(getApplicationContext(),view);
-                menu.getMenuInflater().inflate(R.menu.details_menu, menu.getMenu());
+                menu.getMenuInflater().inflate(R.menu.alter_ingredients, menu.getMenu());
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
-                            case R.id.menu_edit:
+                            case R.id.menu_edit_ingredient:
                                 AlertDialog.Builder alert= new AlertDialog.Builder(EditRecipe.this);
                                 alert.setTitle("Edit An Ingredient");
                                 alert.setMessage("Please enter the new ingredient.");
@@ -141,7 +143,7 @@ public class EditRecipe extends AppCompatActivity {
                                 final AlertDialog theAlert=alert.create();
                                 theAlert.show();
                                 break;
-                            case R.id.menu_delete:
+                            case R.id.menu_delete_ingredient:
                                 AlertDialog.Builder alert2= new AlertDialog.Builder(EditRecipe.this);
                                 alert2.setTitle("Delete An Ingredient");
                                 alert2.setMessage("Are you sure you want to delete this ingredient?");
