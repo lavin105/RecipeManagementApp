@@ -47,7 +47,7 @@ public class RecipeGrid extends AppCompatActivity{
         nav=findViewById(R.id.nav);
 
 
-        Recipe r1 = new Recipe("test recipe1","https://www.thewholesomedish.com/wp-content/uploads/2018/07/Best-Lasagna-550-500x375.jpg","www.test.com","www.","test1","test1,test1",1,1);
+        Recipe r1 = new Recipe("test recipe1","https://www.thewholesomedish.com/wp-content/uploads/2018/07/Best-Lasagna-550-500x375.jpg","https://www.youtube.com/watch?v=0Jwx3x8g-xA&list=RD0Jwx3x8g-xA&start_radio=1","https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/","test1","test1,test1",1,1);
         Recipe r2= new Recipe("test recipe2","","www.test.com","www.","test2","test2,test2",2,1);
         Recipe r3 =new Recipe("test recipe3","test","www.test.com","www.","test3","test3,test3",3,1);
         Recipe r4 = new Recipe("test recipe4","test","www.test.com","www.","test4","test4,test4",2,1);

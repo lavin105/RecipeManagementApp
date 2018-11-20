@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -35,6 +36,9 @@ public class RecipeInformation extends AppCompatActivity {
     ImageView recipePicture;
     FloatingActionButton toYoutube, toWeb, toShare;
     Recipe theRecipe;
+    int REQUEST_CODE_WEB=1;
+    int REQUEST_CODE_VIDEO=2;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,13 +106,27 @@ public class RecipeInformation extends AppCompatActivity {
         toYoutube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Youtube");
+
+                if(theRecipe.getYoutube_url().equals("")){
+                    Toast.makeText(RecipeInformation.this,"Your recipe is not linked to a YouTube video",Toast.LENGTH_SHORT).show();
+                }else{
+
+
+
+                }
+
             }
         });
         toWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Web");
+                Intent i = new Intent(RecipeInformation.this,WebComponent.class);
+                if(theRecipe.getWeb_url().equals("")){
+                    Toast.makeText(RecipeInformation.this,"Your recipe is not linked to a recipe page",Toast.LENGTH_SHORT).show();
+                }else{
+                    i.putExtra("url",theRecipe.getWeb_url());
+                    startActivityForResult(i,REQUEST_CODE_WEB);
+                }
             }
         });
         toShare.setOnClickListener(new View.OnClickListener() {

@@ -3,6 +3,7 @@ package lavin105.recipemanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -72,21 +73,24 @@ public class AddRecipe extends AppCompatActivity {
         toIamges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent googleIamges= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/imghp"));
+                startActivity(googleIamges);
             }
         });
 
         toWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent googleSearch= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
+                startActivity(googleSearch);
             }
         });
 
         toYoutube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent youtubeSearch= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com"));
+                startActivity(youtubeSearch);
             }
         });
 
