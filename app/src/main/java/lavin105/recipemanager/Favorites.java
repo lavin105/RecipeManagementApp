@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
 
@@ -22,6 +23,7 @@ public class Favorites extends AppCompatActivity {
     ArrayList<Recipe> favoritesList;
     FloatingActionButton toHome;
     ArrayList<Recipe> filteredRecipeList;
+    int REQUEST_CODE_RECIPE_INFO=1;
 
 
     @Override
@@ -45,6 +47,22 @@ public class Favorites extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(search.getQuery().toString().equals("")){
+                    Intent i = new Intent(Favorites.this,RecipeInformation.class);
+                    i.putExtra("recipe",favoritesList.get(position));
+                    startActivityForResult(i,REQUEST_CODE_RECIPE_INFO);
+
+                }else{
+                    Intent i = new Intent(Favorites.this,RecipeInformation.class);
+                    i.putExtra("recipe",filteredRecipeList.get(position));
+                    startActivityForResult(i,REQUEST_CODE_RECIPE_INFO);
+                }
             }
         });
 
