@@ -106,12 +106,12 @@ public class RecipeInformation extends AppCompatActivity {
         toYoutube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(RecipeInformation.this,VideoComponent.class);
                 if(theRecipe.getYoutube_url().equals("")){
                     Toast.makeText(RecipeInformation.this,"Your recipe is not linked to a YouTube video",Toast.LENGTH_SHORT).show();
                 }else{
-
-
+                i.putExtra("url",theRecipe.getYoutube_url());
+                startActivityForResult(i,REQUEST_CODE_VIDEO);
 
                 }
 
