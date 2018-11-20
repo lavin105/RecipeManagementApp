@@ -27,6 +27,7 @@ import java.util.ArrayList;
 public class RecipeGrid extends AppCompatActivity{
     GridView grid;
     ArrayList<Recipe> recipeList;
+    ArrayList<Recipe> favoritesList;
     GridAdapter adapter;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
@@ -37,6 +38,7 @@ public class RecipeGrid extends AppCompatActivity{
     int REQUEST_CODE_ADD_RECIPE=1;
     int REQUEST_CODE_RECIPE_INFO=2;
     int REQUEST_CODE_EDIT_RECIPE=3;
+    int REQUEST_CODE_FAVORITES=4;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class RecipeGrid extends AppCompatActivity{
         Recipe r3 =new Recipe("test recipe3","test","www.test.com","www.","test3","test3,test3",3,1);
         Recipe r4 = new Recipe("test recipe4","test","www.test.com","www.","test4","test4,test4",2,1);
         recipeList= new ArrayList<>();
+        favoritesList=new ArrayList<>();
         recipeList.add(r1);
         recipeList.add(r2);
         recipeList.add(r3);
@@ -90,7 +93,18 @@ public class RecipeGrid extends AppCompatActivity{
                     startActivityForResult(toAdd,REQUEST_CODE_ADD_RECIPE);
                 }
                 if(id==R.id.favorites_menu){
-                    System.out.println("Favorites");
+                    Intent toFavorites=new Intent(RecipeGrid.this,Favorites.class);
+
+                    for(int i=0;i<recipeList.size();i++){
+                        if (recipeList.get(i).getRating()==3){
+                            favoritesList.add(recipeList.get(i));
+                        }
+
+                    }
+
+                    toFavorites.putExtra("favorites",favoritesList);
+                    toFavorites.putExtra("all_recipes",recipeList);
+                    startActivityForResult(toFavorites,REQUEST_CODE_FAVORITES);
                 }
                 if(id==R.id.logout_menu){
                     System.out.println("Logout");

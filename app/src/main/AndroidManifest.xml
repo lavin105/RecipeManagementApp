@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditRecipe" android:windowSoftInputMode="stateHidden|adjustResize" android:configChanges="keyboardHidden|orientation|screenSize"/>
-
+        <activity android:name=".Favorites"/>
     </application>
 
 
