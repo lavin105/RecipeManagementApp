@@ -1,8 +1,10 @@
 package lavin105.recipemanager;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,6 +41,8 @@ public class RecipeGrid extends AppCompatActivity{
     int REQUEST_CODE_RECIPE_INFO=2;
     int REQUEST_CODE_EDIT_RECIPE=3;
     int REQUEST_CODE_FAVORITES=4;
+    public int count=0;
+    int tempInt = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,20 +51,30 @@ public class RecipeGrid extends AppCompatActivity{
         nav=findViewById(R.id.nav);
 
 
+        count = readSharedPreferenceInt("cntSP","cntKey");
+        if(count==0){
+            Intent intent = new Intent();
+            intent.setClass(RecipeGrid.this, GetStarted.class);
+            startActivity(intent);
+            count++;
+            writeSharedPreference(count,"cntSP","cntKey");
+        }
+
+
         Recipe r1 = new Recipe("test recipe1","https://www.thewholesomedish.com/wp-content/uploads/2018/07/Best-Lasagna-550-500x375.jpg","https://www.youtube.com/watch?v=BFrkRFgHLVk","https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/","test1","test1,test1",1,1);
         Recipe r2= new Recipe("test recipe2","","www.test.com","www.","test2","test2,test2",2,1);
         Recipe r3 =new Recipe("test recipe3","test","www.test.com","www.","test3","test3,test3",3,1);
         Recipe r4 = new Recipe("test recipe4","test","www.test.com","www.","test4","test4,test4",2,1);
         recipeList= new ArrayList<>();
         favoritesList=new ArrayList<>();
-        recipeList.add(r1);
-        recipeList.add(r2);
-        recipeList.add(r3);
-        recipeList.add(r4);
+        //recipeList.add(r1);
+        //recipeList.add(r2);
+        //recipeList.add(r3);
+        //recipeList.add(r4);
 
         if(recipeList.isEmpty()){
             AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
-            alert2.setTitle("You have no recipes!");
+            alert2.setTitle("Welcome to RecipeManager you currently have no recipes!");
             alert2.setMessage("Would you like to add one now?");
             alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
@@ -226,6 +240,28 @@ public class RecipeGrid extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return true;
     }
+
+
+
+    //Read from Shared Preferance
+    public int readSharedPreferenceInt(String spName,String key){
+        SharedPreferences sharedPreferences = getSharedPreferences(spName,Context.MODE_PRIVATE);
+        return tempInt = sharedPreferences.getInt(key, 0);
+    }
+
+    //write shared preferences in integer
+    public void writeSharedPreference(int ammount,String spName,String key ){
+
+        SharedPreferences sharedPreferences = getSharedPreferences(spName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(key, ammount);
+        editor.commit();
+    }
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
