@@ -132,7 +132,22 @@ public class RecipeInformation extends AppCompatActivity {
         toShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Share");
+
+             Intent share = new Intent(Intent.ACTION_SEND);
+             share.putExtra(Intent.EXTRA_SUBJECT,"Check out this recipe!");
+
+             String message="Recipe Name:\n\n"+theRecipe.getName()+"\n\n"+"Cooking Instructions:"+"\n\n"+theRecipe.getInstructions()+"\n\n"+"Ingredients:\n\n";
+
+             String[] breakup=theRecipe.getIngredients().split(",");
+             for(int i=0;i<breakup.length;i++){
+                 message+=breakup[i]+"\n";
+             }
+             message+="\n\n\n"+"Youtube Link:\n\n"+theRecipe.getYoutube_url()+"\n\n"+"Web Link:\n\n"+theRecipe.getWeb_url()+"\n\n\n\n\nThis email was provided to you by RecipeManager";
+
+             share.putExtra(Intent.EXTRA_TEXT,message);
+             share.setType("message/rfc822");
+             startActivity(Intent.createChooser(share,"Please chose your preferred email client."));
+
             }
         });
     }

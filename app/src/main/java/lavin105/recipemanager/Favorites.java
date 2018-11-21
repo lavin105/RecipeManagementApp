@@ -42,6 +42,8 @@ public class Favorites extends AppCompatActivity {
         adapter= new GridAdapter(Favorites  .this,favoritesList);
         grid.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        getSupportActionBar().setTitle("Favorites");
+
 
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
