@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="290dp"
+    android:layout_height="match_parent"
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
     android:layout_marginTop="5dp"
@@ -13,22 +13,28 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_close"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="3dp"
-        android:id="@+id/close_popup"/>
+        android:layout_marginEnd="6dp"
+        android:id="@+id/close_popup"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="12dp"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Units Converter"
+            android:text="Measurement Converter"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:textColor="@color/black"
-            android:textSize="23sp"/>
+            android:textSize="23sp"
+            android:layout_marginTop="-8dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,12 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="to"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:layout_marginEnd="4dp"/>
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/units_2"
-                android:entries="@array/units"/>
+                android:entries="@array/units"
+                android:layout_marginStart="4dp"/>
 
         </LinearLayout>
         <Button
@@ -77,7 +85,7 @@
             android:textColor="@color/black"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +93,7 @@
             android:textColor="@color/black"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="3dp"
             android:id="@+id/result"/>
     </LinearLayout>
 

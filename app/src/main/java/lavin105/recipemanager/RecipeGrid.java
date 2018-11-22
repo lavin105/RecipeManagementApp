@@ -553,7 +553,10 @@ public class RecipeGrid extends AppCompatActivity{
 
                         }
                     });
+                    int width = (int)(getResources().getDisplayMetrics().widthPixels*0.99);
+                    int height = (int)(getResources().getDisplayMetrics().heightPixels*0.45);
 
+                    customDialog.getWindow().setLayout(width, height);
                     customDialog.show();
 
 
