@@ -67,10 +67,10 @@ public class RecipeGrid extends AppCompatActivity{
         Recipe r4 = new Recipe("test recipe4","test","www.test.com","www.","test4","test4,test4",2,1);
         recipeList= new ArrayList<>();
         favoritesList=new ArrayList<>();
-        //recipeList.add(r1);
-        //recipeList.add(r2);
-        //recipeList.add(r3);
-        //recipeList.add(r4);
+        recipeList.add(r1);
+        recipeList.add(r2);
+        recipeList.add(r3);
+        recipeList.add(r4);
 
         if(recipeList.isEmpty()){
             AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
