@@ -30,4 +30,16 @@
     <string name="add_ingredient">ADD</string>
     <string name="add_recipe">Add Recipe</string>
     <string name="edit_recipe">Edit Recipe</string>
+
+
+
+    <string-array name="units">
+        <item>Ounces</item>
+        <item>Cups</item>
+        <item>Pounds</item>
+        <item>tbsp</item>
+        <item>tsp</item>
+        <item>mL</item>
+        <item>fl oz</item>
+    </string-array>
 </resources>

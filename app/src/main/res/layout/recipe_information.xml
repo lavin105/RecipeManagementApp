@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="270dp"
+        android:layout_width="240dp"
         android:layout_height="190dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="59dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/recipe_picture_border"
        android:id="@+id/the_recipe_picture"/>
@@ -45,15 +45,29 @@
         app:fabSize="normal"
         android:src="@drawable/ic_share"
         android:id="@+id/share"/>
-    <TextView
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recipe Title"
-        android:textSize="30sp"
-        android:textColor="@color/black"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="30dp"
+        app:backgroundTint="#fce98d"
+        app:fabSize="normal"
+        android:id="@+id/convert"
+        android:src="@drawable/ic_converter"
+        />
+
+    <TextView
+        android:id="@+id/recipe_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-55dp"
+        android:layout_marginTop="-69dp"
         android:gravity="center"
-        android:layout_marginTop="7dp"
-        android:id="@+id/recipe_name"/>
+        android:text="Recipe Title"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +77,8 @@
         android:scaleY="0.9"
         android:layout_gravity="center"
         android:isIndicator="true"
-        android:id="@+id/the_recipe_rating"/>
+        android:id="@+id/the_recipe_rating"
+        android:layout_marginStart="-55dp"/>
     <RadioGroup
         android:checkedButton="@+id/instructions2"
         android:id="@+id/toggle2"

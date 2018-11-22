@@ -2,7 +2,9 @@ package lavin105.recipemanager;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -11,11 +13,14 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +43,13 @@ public class RecipeInformation extends AppCompatActivity {
     Recipe theRecipe;
     int REQUEST_CODE_WEB=1;
     int REQUEST_CODE_VIDEO=2;
+    FloatingActionButton convertMeasuremnt;
+    Dialog customDialog;
+    Button convert;
+    EditText theAmount;
+    Spinner unit1, unit2;
+    ImageView closePopup;
+    TextView theResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +62,7 @@ public class RecipeInformation extends AppCompatActivity {
         theRating.setRating(2);
         recipePicture=findViewById(R.id.the_recipe_picture);
         toShare=findViewById(R.id.share);
+        convertMeasuremnt=findViewById(R.id.convert);
         toWeb=findViewById(R.id.web);
         toYoutube=findViewById(R.id.youtube);
         switchView2=findViewById(R.id.toggle2);
@@ -71,10 +84,437 @@ public class RecipeInformation extends AppCompatActivity {
             }
         });
 
+        customDialog=new Dialog(RecipeInformation.this);
 
 
-        //TODO
-        //Add getIntent here
+        convertMeasuremnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customDialog.setContentView(R.layout.conversion_popup);
+                convert =customDialog.findViewById(R.id.convert_units);
+                theAmount=customDialog.findViewById(R.id.amount);
+                unit1=customDialog.findViewById(R.id.units_1);
+                unit2=customDialog.findViewById(R.id.units_2);
+                closePopup=customDialog.findViewById(R.id.close_popup);
+                theResult=customDialog.findViewById(R.id.result);
+
+                closePopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        customDialog.dismiss();
+                    }
+                });
+
+
+                convert.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        if(theAmount.getText().toString().equals("")){
+                            theResult.setTextColor(Color.RED);
+                            theResult.setText("You did not enter a value to convert...");
+
+                        }else{
+                            try {
+                                theResult.setTextColor(Color.BLACK);
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+
+                                }
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 0.125;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 16;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 2;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 6;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 29.574;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Ounces") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 8;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 16;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 48;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 236.588;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Cups") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 8;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 16;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 453.59;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("Pounds") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 15.34;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 2;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 16;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 3;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 14.787;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 2;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tbsp") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 6;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 6;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 48;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 3;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("tsp") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 4.929;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 29.574;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 236.588;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText("Not a valid conversion");
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 14.787;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 4.929;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("mL") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 29.574;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("Ounces") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("Cups") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 0.125;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("Pounds") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double / 16;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("tbsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 2;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("tsp") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 6;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("mL") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    amt_double = amt_double * 29.574;
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                                if (unit1.getSelectedItem().equals("fl oz") && unit2.getSelectedItem().equals("fl oz") && !theAmount.getText().toString().equals("0")
+                                        ) {
+                                    String amt = theAmount.getText().toString();
+                                    Double amt_double = Double.parseDouble(amt);
+                                    String res = Double.toString(amt_double);
+                                    theResult.setText(res);
+                                }
+                            }catch (NumberFormatException e){
+                                theResult.setTextColor(Color.RED);
+                                theResult.setText("You did not enter a number...");
+                            }
+                        }
+
+
+
+                    }
+                });
+
+                customDialog.show();
+            }
+        });
+
+
+
+
+
         Intent fromRecipeGrid = getIntent();
         theRecipe=(Recipe)fromRecipeGrid.getSerializableExtra("recipe");
         ing=theRecipe.getIngredients();

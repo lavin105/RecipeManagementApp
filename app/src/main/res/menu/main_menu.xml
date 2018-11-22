@@ -21,7 +21,14 @@
                 android:title="View your Favorites"
                 app:showAsAction="never"
                 android:visible="true"
-                android:icon="@drawable/ic_star"/></menu>
+                android:icon="@drawable/ic_star"/>
+            <item
+                android:id="@+id/conversion"
+                android:orderInCategory="100"
+                android:title="Convert a Measurement"
+                app:showAsAction="never"
+                android:visible="true"
+                android:icon="@drawable/ic_converter"/></menu>
     </item>
 
     <item
@@ -33,7 +40,7 @@
             <item
                 android:id="@+id/logout_menu"
                 android:orderInCategory="100"
-                android:title="Logout"
+                android:title="Leave"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_logout"/>
