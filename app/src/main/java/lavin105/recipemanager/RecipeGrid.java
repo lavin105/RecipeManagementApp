@@ -314,6 +314,11 @@ public class RecipeGrid extends AppCompatActivity{
 
             }
         }
+        if(requestCode==REQUEST_CODE_FAVORITES){
+            if (resultCode==RESULT_OK){
+                favoritesList.clear();
+            }
+        }
 
     }
 }

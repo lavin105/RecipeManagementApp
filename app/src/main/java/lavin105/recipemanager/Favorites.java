@@ -48,6 +48,8 @@ public class Favorites extends AppCompatActivity {
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i= new Intent();
+                setResult(RESULT_OK,i);
                 finish();
             }
         });
@@ -104,4 +106,10 @@ public class Favorites extends AppCompatActivity {
         adapter.filterList(filteredRecipeList);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i= new Intent();
+        setResult(RESULT_OK,i);
+        finish();
+    }
 }
