@@ -28,7 +28,14 @@
                 android:title="Convert a Measurement"
                 app:showAsAction="never"
                 android:visible="true"
-                android:icon="@drawable/ic_converter"/></menu>
+                android:icon="@drawable/ic_converter"/>
+            <item
+                android:id="@+id/cook_timer"
+                android:orderInCategory="100"
+                android:title="Set a Cooking Alarm"
+                app:showAsAction="never"
+                android:visible="true"
+                android:icon="@drawable/ic_timer"/></menu>
     </item>
 
     <item

@@ -55,14 +55,17 @@ public class RecipeGrid extends AppCompatActivity{
     int REQUEST_CODE_RECIPE_INFO=2;
     int REQUEST_CODE_EDIT_RECIPE=3;
     int REQUEST_CODE_FAVORITES=4;
+    int REQUEST_CODE_TIMER=5;
     public int count=0;
     int tempInt = 0;
+    String theAlarm;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_grid);
         grid=findViewById(R.id.recipe_grid);
         nav=findViewById(R.id.nav);
+        theAlarm="";
 
         customDialog=new Dialog(RecipeGrid.this);
 
@@ -566,9 +569,13 @@ public class RecipeGrid extends AppCompatActivity{
 
 
 
+                if(id==R.id.cook_timer){
+                Intent timer = new Intent(RecipeGrid.this,Timer.class);
+                timer.putExtra("theAlarm",theAlarm);
+                startActivityForResult(timer,REQUEST_CODE_TIMER);
+                }
                 if(id==R.id.logout_menu){
-                    System.out.println("Logout");
-
+                    System.out.println("Leave");
                 }
                 if(id==R.id.delete_account_menu){
                     System.out.println("Delete Account");
@@ -689,13 +696,11 @@ public class RecipeGrid extends AppCompatActivity{
 
 
 
-    //Read from Shared Preferance
     public int readSharedPreferenceInt(String spName,String key){
         SharedPreferences sharedPreferences = getSharedPreferences(spName,Context.MODE_PRIVATE);
         return tempInt = sharedPreferences.getInt(key, 0);
     }
 
-    //write shared preferences in integer
     public void writeSharedPreference(int ammount,String spName,String key ){
 
         SharedPreferences sharedPreferences = getSharedPreferences(spName, Context.MODE_PRIVATE);
@@ -763,6 +768,13 @@ public class RecipeGrid extends AppCompatActivity{
         if(requestCode==REQUEST_CODE_FAVORITES){
             if (resultCode==RESULT_OK){
                 favoritesList.clear();
+            }
+        }
+        if (requestCode==REQUEST_CODE_TIMER){
+            if(resultCode==RESULT_OK){
+
+                theAlarm = data.getStringExtra("alarm");
+
             }
         }
 

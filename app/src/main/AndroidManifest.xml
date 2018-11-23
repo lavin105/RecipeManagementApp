@@ -28,6 +28,8 @@
         <activity android:name=".WebComponent"/>
         <activity android:name=".VideoComponent"/>
         <activity android:name=".GetStarted"/>
+        <activity android:name=".Timer" android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <receiver android:name=".AlertResponse"/>
     </application>
 
 
