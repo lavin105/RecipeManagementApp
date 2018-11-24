@@ -5,7 +5,9 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
@@ -23,6 +25,7 @@ public class Timer extends AppCompatActivity implements TimePickerDialog.OnTimeS
     Button setTime, cancelAlarm;
     TextView theTime;
     FloatingActionButton goHome;
+    Button defaultTimer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class Timer extends AppCompatActivity implements TimePickerDialog.OnTimeS
 
         setTime=findViewById(R.id.set_alarm);
         theTime=findViewById(R.id.time);
+        defaultTimer=findViewById(R.id.default_timer);
         goHome=findViewById(R.id.go_home);
         cancelAlarm=findViewById(R.id.cancel_alarm);
         getSupportActionBar().setTitle("Cook Timer");
@@ -71,6 +75,14 @@ public class Timer extends AppCompatActivity implements TimePickerDialog.OnTimeS
                     cancelTheAlarm();
 
                 }
+            }
+        });
+
+        defaultTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent defaultAlarm = new Intent(AlarmClock.ACTION_SET_TIMER);
+                startActivity(defaultAlarm);
             }
         });
 
@@ -123,5 +135,23 @@ public class Timer extends AppCompatActivity implements TimePickerDialog.OnTimeS
         i.putExtra("alarm",theTime.getText().toString());
         setResult(RESULT_OK,i);
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences pref=getSharedPreferences("prefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("alarmRunning",theTime.getText().toString());
+        editor.apply();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences pref = getSharedPreferences("prefs",MODE_PRIVATE);
+        theTime.setText(pref.getString("alarmRunning","No Cooking Alarm Set"));
+
+
     }
 }
