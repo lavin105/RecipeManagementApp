@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,11 @@ import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.util.ArrayList;
 
 public class AddRecipe extends AppCompatActivity {
@@ -30,6 +36,8 @@ public class AddRecipe extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     private static final String SEPARATOR = ",";
     RatingBar recipeRating;
+    FloatingActionButton scrapeWeb;
+    EditText webText;
 
 
     @Override
@@ -50,6 +58,8 @@ public class AddRecipe extends AppCompatActivity {
         toWeb=findViewById(R.id.web_button);
         toYoutube=findViewById(R.id.youtube_button);
         ingredinetsList=findViewById(R.id.list_of_ingredients);
+        scrapeWeb=findViewById(R.id.scrape_web);
+        webText=findViewById(R.id.web_data);
         ingredientsArrayList=new ArrayList<>();
         adapter=new ArrayAdapter<>(AddRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
         ingredinetsList.setAdapter(adapter);
@@ -91,6 +101,15 @@ public class AddRecipe extends AppCompatActivity {
             public void onClick(View v) {
                 Intent youtubeSearch= new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com"));
                 startActivity(youtubeSearch);
+            }
+        });
+
+
+        scrapeWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webText.setText("Processing...");
+                new webScrape().execute();
             }
         });
 
@@ -213,4 +232,43 @@ public class AddRecipe extends AppCompatActivity {
 
 
     }
+
+    public class webScrape extends AsyncTask<Void,Void,Void>{
+        Elements title;
+        Elements p;
+        Elements li;
+
+        Elements directions;
+        Elements ingreds;
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                Document doc = Jsoup.connect("https://www.tasteofhome.com/recipes/best-lasagna/").get();
+                title=doc.getElementsByTag("h1");
+                p=doc.getElementsByTag("p");
+                li=doc.getElementsByTag("li");
+
+                directions=doc.getElementsByClass("recipe-directions mobile-expand-section");
+                ingreds=doc.getElementsByClass("recipe-single-container");
+
+
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+                webText.setText("Not a vald website");
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            String scrape=title.text()+" "+directions.text()+" "+ingreds.text();
+            webText.setText(scrape);
+        }
+    }
+
 }
