@@ -38,6 +38,7 @@ public class AddRecipe extends AppCompatActivity {
     RatingBar recipeRating;
     FloatingActionButton scrapeWeb;
     EditText webText;
+    String url;
 
 
     @Override
@@ -108,8 +109,31 @@ public class AddRecipe extends AppCompatActivity {
         scrapeWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                webText.setText("Processing...");
-                new webScrape().execute();
+                AlertDialog.Builder alert= new AlertDialog.Builder(AddRecipe.this);
+                alert.setTitle("Get information from a website...");
+                alert.setMessage("Please enter the url.");
+                final EditText alert1input=new EditText(AddRecipe.this);
+                alert.setView(alert1input);
+                alert.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        url=alert1input.getText().toString();
+                        webText.setHint("Processing...");
+                        new webScrape().execute();
+
+
+
+                    }
+                });
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                final AlertDialog theAlert=alert.create();
+                theAlert.show();
             }
         });
 
@@ -234,29 +258,18 @@ public class AddRecipe extends AppCompatActivity {
     }
 
     public class webScrape extends AsyncTask<Void,Void,Void>{
-        Elements title;
-        Elements p;
-        Elements li;
-
-        Elements directions;
-        Elements ingreds;
+        String text;
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                Document doc = Jsoup.connect("https://www.tasteofhome.com/recipes/best-lasagna/").get();
-                title=doc.getElementsByTag("h1");
-                p=doc.getElementsByTag("p");
-                li=doc.getElementsByTag("li");
-
-                directions=doc.getElementsByClass("recipe-directions mobile-expand-section");
-                ingreds=doc.getElementsByClass("recipe-single-container");
+                Document doc = Jsoup.connect(url).get();
+                text=doc.text();
 
 
 
 
             }catch (Exception e){
                 e.printStackTrace();
-                webText.setText("Not a vald website");
             }
 
             return null;
@@ -265,9 +278,13 @@ public class AddRecipe extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            if(text!=null){
+                webText.setText(text);
 
-            String scrape=title.text()+" "+directions.text()+" "+ingreds.text();
-            webText.setText(scrape);
+            }else{
+                Toast.makeText(AddRecipe.this,"Not a valid url",Toast.LENGTH_SHORT).show();
+                webText.setHint("Web Data");
+            }
         }
     }
 
