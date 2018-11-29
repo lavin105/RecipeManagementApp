@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,7 +63,17 @@ public class GridAdapter extends BaseAdapter {
                         .load(r.get(position).getImage_url())
                         .error(R.drawable.recipe_manager_logo)
                         .fit()
-                        .into(picture);
+                        .into(picture, new Callback() {
+                            @Override
+                            public void onSuccess() {
+
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Toast.makeText(context,"Image link invalid, loaded default image...",Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
         }
 
