@@ -10,10 +10,9 @@ public class Recipe implements Serializable {
     String instructions;
     String ingredients;
     int rating;
-    int icons ;
 
 
-    public Recipe(String name, String image_url, String youtube_url, String web_url, String instructions, String ingredients, int rating, int icons) {
+    public Recipe(String name, String image_url, String youtube_url, String web_url, String instructions, String ingredients, int rating) {
         this.name = name;
         this.image_url = image_url;
         this.youtube_url = youtube_url;
@@ -21,7 +20,6 @@ public class Recipe implements Serializable {
         this.instructions = instructions;
         this.ingredients = ingredients;
         this.rating=rating;
-        this.icons = icons;
     }
 
 
@@ -82,11 +80,5 @@ public class Recipe implements Serializable {
         this.rating = rating;
     }
 
-    public int getIcons() {
-        return icons;
-    }
 
-    public void setIcons(int icons) {
-        this.icons = icons;
-    }
 }
