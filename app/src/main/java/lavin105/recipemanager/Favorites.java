@@ -1,6 +1,9 @@
 package lavin105.recipemanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
@@ -24,26 +28,46 @@ public class Favorites extends AppCompatActivity {
     FloatingActionButton toHome;
     ArrayList<Recipe> filteredRecipeList;
     int REQUEST_CODE_RECIPE_INFO=1;
-
+    RecipeDatabaseManager recipeDatabaseManager;
+    Cursor recipeData;
+    int REQUEST_CODE_EDIT_RECIPE=3;
+    int specialPosition;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_favorites);
         getSupportActionBar().setTitle("Your Favorites");
+        recipeDatabaseManager=new RecipeDatabaseManager(Favorites.this);
+
 
         grid=findViewById(R.id.recipe_grid);
         toHome=findViewById(R.id.to_home);
         recipeList=new ArrayList<Recipe>();
         favoritesList=new ArrayList<Recipe>();
-        Intent fromHome=getIntent();
-        favoritesList=(ArrayList<Recipe>)fromHome.getSerializableExtra("favorites");
-        recipeList=(ArrayList<Recipe>)fromHome.getSerializableExtra("all_recipes");
-        adapter= new GridAdapter(Favorites  .this,favoritesList);
-        grid.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        getSupportActionBar().setTitle("Favorites");
 
+        Intent fromHome=getIntent();
+        //favoritesList=(ArrayList<Recipe>)fromHome.getSerializableExtra("favorites");
+        //recipeList=(ArrayList<Recipe>)fromHome.getSerializableExtra("all_recipes");
+
+        recipeData=recipeDatabaseManager.getFavoritesList();
+        if (recipeData.getCount()==0){
+            System.out.println("Database Empty");
+            adapter= new GridAdapter(Favorites.this,recipeList);
+            grid.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }else{
+            while (recipeData.moveToNext()){
+                Recipe r= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                recipeList.add(r);
+                adapter= new GridAdapter(Favorites.this,recipeList);
+                grid.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+            }
+
+        }
+        getSupportActionBar().setTitle("Favorites");
 
         toHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,17 +83,97 @@ public class Favorites extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(search.getQuery().toString().equals("")){
                     Intent i = new Intent(Favorites.this,RecipeInformation.class);
-                    i.putExtra("recipe",favoritesList.get(position));
+                    i.putExtra("recipe",recipeList.get(position));
                     startActivityForResult(i,REQUEST_CODE_RECIPE_INFO);
 
                 }else{
                     Intent i = new Intent(Favorites.this,RecipeInformation.class);
-                    i.putExtra("recipe",filteredRecipeList.get(position));
+                    i.putExtra("recipe",recipeList.get(position));
                     startActivityForResult(i,REQUEST_CODE_RECIPE_INFO);
                 }
             }
         });
+        grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                final Recipe recipe=(Recipe)parent.getItemAtPosition(position);
 
+                PopupMenu menu = new PopupMenu(getApplicationContext(),view);
+                menu.getMenuInflater().inflate(R.menu.details_menu, menu.getMenu());
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.menu_edit:
+                                if(search.getQuery().toString().equals("")){
+                                    Intent i = new Intent(Favorites.this,EditRecipe.class);
+                                    i.putExtra("index",Integer.toString(position));
+                                    i.putExtra("recipe",recipeList.get(position));
+                                    startActivityForResult(i,REQUEST_CODE_EDIT_RECIPE);
+
+                                }else{
+                                    Intent i = new Intent(Favorites.this,EditRecipe.class);
+
+                                    for(int x=0; x<recipeList.size();x++){
+                                        for(int y=0;y<filteredRecipeList.size();y++){
+                                            if (recipeList.get(x).getInstructions()==filteredRecipeList.get(y).getInstructions()){
+                                                specialPosition=x;
+                                            }
+                                        }
+                                    }
+
+                                    i.putExtra("recipe",recipeList.get(specialPosition));
+                                    i.putExtra("index",Integer.toString(specialPosition));
+                                    startActivityForResult(i,REQUEST_CODE_EDIT_RECIPE);
+                                }
+                                break;
+                            case R.id.menu_delete:
+
+                                AlertDialog.Builder alert2= new AlertDialog.Builder(Favorites.this);
+                                alert2.setTitle("Delete this Recipe");
+                                alert2.setMessage("Are you sure you want to delete this recipe?");
+                                alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        recipeDatabaseManager.deleteRecipe(recipe);
+                                        recipeData=recipeDatabaseManager.getFavoritesList();
+                                        if (recipeData.getCount()==0){
+                                            System.out.println("Database Empty");
+                                            recipeList.clear();
+                                            adapter.notifyDataSetChanged();
+                                        }else{
+                                            recipeList.clear();
+                                            while (recipeData.moveToNext()){
+                                                Recipe r2= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                                                recipeList.add(r2);
+                                                adapter= new GridAdapter(Favorites.this,recipeList);
+                                                grid.setAdapter(adapter);
+                                                adapter.notifyDataSetChanged();
+                                            }
+
+                                        }
+                                    }
+                                });
+                                alert2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                final AlertDialog theAlert2=alert2.create();
+                                theAlert2.show();
+
+
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                menu.show();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -111,5 +215,34 @@ public class Favorites extends AppCompatActivity {
         Intent i= new Intent();
         setResult(RESULT_OK,i);
         finish();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==REQUEST_CODE_EDIT_RECIPE){
+            if(resultCode==RESULT_OK){
+                System.out.println("edited");
+                recipeData = recipeDatabaseManager.getFavoritesList();
+                if (recipeData.getCount() == 0) {
+                    System.out.println("Database Empty");
+                    recipeList.clear();
+                    adapter.notifyDataSetChanged();
+                } else {
+                    recipeList.clear();
+                    while (recipeData.moveToNext()) {
+                        Recipe r2= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                        recipeList.add(r2);
+                        adapter= new GridAdapter(Favorites.this,recipeList);
+                        grid.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
+
+            }
+        }
+
     }
 }

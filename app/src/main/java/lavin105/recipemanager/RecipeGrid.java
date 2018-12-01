@@ -806,7 +806,23 @@ public class RecipeGrid extends AppCompatActivity{
         }
         if(requestCode==REQUEST_CODE_FAVORITES){
             if (resultCode==RESULT_OK){
-                favoritesList.clear();
+                System.out.println("from favorites");
+                recipeData = recipeDatabaseManager.getRecipeList();
+                if (recipeData.getCount() == 0) {
+                    System.out.println("Database Empty");
+                    recipeList.clear();
+                    adapter.notifyDataSetChanged();
+                } else {
+                    recipeList.clear();
+                    while (recipeData.moveToNext()) {
+                        Recipe r2= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                        recipeList.add(r2);
+                        adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                        grid.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
             }
         }
         if (requestCode==REQUEST_CODE_TIMER){

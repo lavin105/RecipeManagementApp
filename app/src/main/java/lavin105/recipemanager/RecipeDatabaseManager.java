@@ -61,6 +61,12 @@ public class RecipeDatabaseManager extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor getFavoritesList(){
+        SQLiteDatabase db= this.getWritableDatabase();
+        Cursor data =db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+COL7+"=3",null);
+        return data;
+    }
+
     public void deleteRecipe(Recipe r){
         SQLiteDatabase db=this.getWritableDatabase();
         String query ="DELETE FROM "+TABLE_NAME+" WHERE "+COL5+" = '"+r.getInstructions()+"'";
