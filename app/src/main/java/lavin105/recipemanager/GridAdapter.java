@@ -71,7 +71,7 @@ public class GridAdapter extends BaseAdapter {
 
                             @Override
                             public void onError(Exception e) {
-                                Toast.makeText(context,"Image link invalid, loaded default image...",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context,"Image link invalid, loaded default image...",Toast.LENGTH_SHORT).show();
                             }
                         });
 

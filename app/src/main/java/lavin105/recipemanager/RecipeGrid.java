@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -59,16 +61,15 @@ public class RecipeGrid extends AppCompatActivity{
     public int count=0;
     int tempInt = 0;
     String theAlarm;
+    RecipeDatabaseManager recipeDatabaseManager;
+    Cursor recipeData;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_grid);
-        grid=findViewById(R.id.recipe_grid);
-        nav=findViewById(R.id.nav);
-        theAlarm="";
-
         customDialog=new Dialog(RecipeGrid.this);
-
+        recipeList= new ArrayList<>();
+        favoritesList=new ArrayList<>();
         count = readSharedPreferenceInt("cntSP","cntKey");
         if(count==0){
             Intent intent = new Intent();
@@ -78,27 +79,25 @@ public class RecipeGrid extends AppCompatActivity{
             writeSharedPreference(count,"cntSP","cntKey");
         }
 
+        grid=findViewById(R.id.recipe_grid);
+        nav=findViewById(R.id.nav);
+        theAlarm="";
+        recipeDatabaseManager=new RecipeDatabaseManager(RecipeGrid.this);
+        recipeData=recipeDatabaseManager.getRecipeList();
 
-        Recipe r1 = new Recipe("test recipe1","https://www.thewholesomedish.com/wp-content/uploads/2018/07/Best-Lasagna-550-500x375.jpg","https://www.youtube.com/watch?v=BFrkRFgHLVk","https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/","test1","test1,test1",1);
-        Recipe r2= new Recipe("test recipe2","","www.test.com","www.","test2","test2,test2",2);
-        Recipe r3 =new Recipe("test recipe3","test","www.test.com","www.","test3","test3,test3",3);
-        Recipe r4 = new Recipe("test recipe4","test","www.test.com","www.","test4","test4,test4",2);
-        recipeList= new ArrayList<>();
-        favoritesList=new ArrayList<>();
-        recipeList.add(r1);
-        recipeList.add(r2);
-        recipeList.add(r3);
-        recipeList.add(r4);
-
-        if(recipeList.isEmpty()){
+        if (recipeData.getCount()==0){
+            System.out.println("Database Empty");
+            adapter= new GridAdapter(RecipeGrid.this,recipeList);
+            grid.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
             alert2.setTitle("Welcome to RecipeManager you currently have no recipes!");
             alert2.setMessage("Would you like to add one now?");
             alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                   Intent addIfEmpty=new Intent(RecipeGrid.this,AddRecipe.class);
-                   startActivityForResult(addIfEmpty,REQUEST_CODE_ADD_RECIPE);
+                    Intent addIfEmpty=new Intent(RecipeGrid.this,AddRecipe.class);
+                    startActivityForResult(addIfEmpty,REQUEST_CODE_ADD_RECIPE);
                 }
             });
             alert2.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -110,10 +109,17 @@ public class RecipeGrid extends AppCompatActivity{
 
             final AlertDialog theAlert2=alert2.create();
             theAlert2.show();
-        }
+        }else{
+            while (recipeData.moveToNext()){
+                Recipe r= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                recipeList.add(r);
+                adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                grid.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
-        adapter= new GridAdapter(RecipeGrid.this,recipeList);
-        grid.setAdapter(adapter);
+            }
+
+        }
         drawer=findViewById(R.id.drawerlayout);
 
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -575,7 +581,7 @@ public class RecipeGrid extends AppCompatActivity{
                 startActivityForResult(timer,REQUEST_CODE_TIMER);
                 }
                 if(id==R.id.logout_menu){
-                    System.out.println("Leave");
+                    finish();
                 }
                 if(id==R.id.delete_account_menu){
                     System.out.println("Delete Account");
@@ -605,6 +611,8 @@ public class RecipeGrid extends AppCompatActivity{
         grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                final Recipe recipe=(Recipe)parent.getItemAtPosition(position);
+
                 PopupMenu menu = new PopupMenu(getApplicationContext(),view);
                 menu.getMenuInflater().inflate(R.menu.details_menu, menu.getMenu());
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -635,34 +643,49 @@ public class RecipeGrid extends AppCompatActivity{
                                 }
                                 break;
                             case R.id.menu_delete:
-                                if(search.getQuery().toString().equals("")){
-                                    recipeList.remove(position);
-                                    adapter= new GridAdapter(RecipeGrid.this,recipeList);
-                                    grid.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
 
-                                }else{
-                                    for(int x=0; x<recipeList.size();x++){
-                                        for(int y=0;y<filteredRecipeList.size();y++){
-                                            if (recipeList.get(x).getInstructions()==filteredRecipeList.get(y).getInstructions()){
-                                                specialPosition=x;
+                                AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
+                                alert2.setTitle("Delete this Recipe");
+                                alert2.setMessage("Are you sure you want to delete this recipe?");
+                                alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        recipeDatabaseManager.deleteRecipe(recipe);
+                                        recipeData=recipeDatabaseManager.getRecipeList();
+                                        if (recipeData.getCount()==0){
+                                            System.out.println("Database Empty");
+                                            recipeList.clear();
+                                            adapter.notifyDataSetChanged();
+                                        }else{
+                                            recipeList.clear();
+                                            while (recipeData.moveToNext()){
+                                                Recipe r2= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                                                recipeList.add(r2);
+                                                adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                                                grid.setAdapter(adapter);
+                                                adapter.notifyDataSetChanged();
                                             }
+
                                         }
                                     }
+                                });
+                                alert2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
 
-                                    recipeList.remove(specialPosition);
-                                    filteredRecipeList.remove(position);
-                                    adapter.notifyDataSetChanged();
+                                final AlertDialog theAlert2=alert2.create();
+                                theAlert2.show();
 
-                                }
+
                                 break;
                         }
                         return false;
                     }
                 });
-
                 menu.show();
-
                 return false;
             }
         });
@@ -710,10 +733,6 @@ public class RecipeGrid extends AppCompatActivity{
         editor.commit();
     }
 
-
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -721,8 +740,6 @@ public class RecipeGrid extends AppCompatActivity{
 
             return true;
         }
-
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -746,22 +763,44 @@ public class RecipeGrid extends AppCompatActivity{
         if (requestCode==REQUEST_CODE_ADD_RECIPE){
             if (resultCode==RESULT_OK){
                 Recipe addedRecipe=(Recipe)data.getSerializableExtra("recipe");
-                recipeList.add(addedRecipe);
-                adapter= new GridAdapter(RecipeGrid.this,recipeList);
-                grid.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                addData(addedRecipe);
+                recipeData = recipeDatabaseManager.getRecipeList();
+                if (recipeData.getCount() == 0) {
+                    System.out.println("Database Empty");
+                    recipeList.clear();
+                    adapter.notifyDataSetChanged();
+                } else {
+                    recipeList.clear();
+                    while (recipeData.moveToNext()) {
+                        Recipe r2= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                        recipeList.add(r2);
+                        adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                        grid.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
 
+                }
             }
         }
         if (requestCode==REQUEST_CODE_EDIT_RECIPE){
             if(resultCode==RESULT_OK){
                 System.out.println("edited");
-                Recipe editedRecipe=(Recipe)data.getSerializableExtra("recipe");
-                String idx=data.getStringExtra("index");
-                recipeList.set(Integer.parseInt(idx),editedRecipe);
-                adapter= new GridAdapter(RecipeGrid.this,recipeList);
-                grid.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+                recipeData = recipeDatabaseManager.getRecipeList();
+                if (recipeData.getCount() == 0) {
+                    System.out.println("Database Empty");
+                    recipeList.clear();
+                    adapter.notifyDataSetChanged();
+                } else {
+                    recipeList.clear();
+                    while (recipeData.moveToNext()) {
+                        Recipe r2= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                        recipeList.add(r2);
+                        adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                        grid.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
 
             }
         }
@@ -772,10 +811,19 @@ public class RecipeGrid extends AppCompatActivity{
         }
         if (requestCode==REQUEST_CODE_TIMER){
             if(resultCode==RESULT_OK){
-
                 theAlarm = data.getStringExtra("alarm");
-
             }
+        }
+
+    }
+    public void addData(Recipe r){
+        boolean insertData=recipeDatabaseManager.addRecipe(r);
+        if (insertData==true){
+            Toast.makeText(RecipeGrid.this,"Recipe was successfully added!",Toast.LENGTH_SHORT).show();
+
+        }else{
+            Toast.makeText(RecipeGrid.this,"Your recipe was not added, something must have gone wrong please try again",Toast.LENGTH_SHORT).show();
+
         }
 
     }

@@ -32,6 +32,8 @@ public class EditRecipe extends AppCompatActivity {
     private static final String SEPARATOR = ",";
     RatingBar recipeRating;
     String position;
+    String oldInstructions;
+    RecipeDatabaseManager recipeDatabaseManager;
 
 
     @Override
@@ -39,6 +41,7 @@ public class EditRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_recipe);
         //------------------------------------------------------------------------------
+        recipeDatabaseManager=new RecipeDatabaseManager(EditRecipe.this);
         recipeName=findViewById(R.id.name_of_recipe);
         recipeRating=findViewById(R.id.recipe_rating);
         imageLink=findViewById(R.id.image_of_recipe);
@@ -62,6 +65,7 @@ public class EditRecipe extends AppCompatActivity {
         Intent fromGrid = getIntent();
         Recipe recipe=(Recipe)fromGrid.getSerializableExtra("recipe");
         position=fromGrid.getStringExtra("index");
+        oldInstructions= recipe.getInstructions();
         recipeName.setText(recipe.getName());
         recipeRating.setRating(recipe.getRating());
         imageLink.setText(recipe.getImage_url());
@@ -215,9 +219,11 @@ public class EditRecipe extends AppCompatActivity {
                     String ingredients=csv;
                     System.out.println(ingredients);
                     Recipe r = new Recipe(name,picture,youtube,web,instructions,ingredients,rating);
+                    recipeDatabaseManager.editRecipe(r,oldInstructions);
+
                     Intent giveRecipe = new Intent();
-                    giveRecipe.putExtra("recipe",r);
-                    giveRecipe.putExtra("index",position);
+                    //giveRecipe.putExtra("recipe",r);
+                    //giveRecipe.putExtra("index",position);
                     setResult(RESULT_OK,giveRecipe);
                     finish();
 
