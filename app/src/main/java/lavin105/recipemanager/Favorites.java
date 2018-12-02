@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,6 @@ public class Favorites extends AppCompatActivity {
     GridAdapter adapter;
     ArrayList<Recipe> recipeList;
     ArrayList<Recipe> favoritesList;
-    FloatingActionButton toHome;
     ArrayList<Recipe> filteredRecipeList;
     int REQUEST_CODE_RECIPE_INFO=1;
     RecipeDatabaseManager recipeDatabaseManager;
@@ -42,20 +41,17 @@ public class Favorites extends AppCompatActivity {
 
 
         grid=findViewById(R.id.recipe_grid);
-        toHome=findViewById(R.id.to_home);
         recipeList=new ArrayList<Recipe>();
         favoritesList=new ArrayList<Recipe>();
 
         Intent fromHome=getIntent();
-        //favoritesList=(ArrayList<Recipe>)fromHome.getSerializableExtra("favorites");
-        //recipeList=(ArrayList<Recipe>)fromHome.getSerializableExtra("all_recipes");
-
         recipeData=recipeDatabaseManager.getFavoritesList();
         if (recipeData.getCount()==0){
             System.out.println("Database Empty");
             adapter= new GridAdapter(Favorites.this,recipeList);
             grid.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+            Toast.makeText(Favorites.this,"You do not have any favorites!",Toast.LENGTH_SHORT).show();
         }else{
             while (recipeData.moveToNext()){
                 Recipe r= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
@@ -69,14 +65,7 @@ public class Favorites extends AppCompatActivity {
         }
         getSupportActionBar().setTitle("Favorites");
 
-        toHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent();
-                setResult(RESULT_OK,i);
-                finish();
-            }
-        });
+
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
