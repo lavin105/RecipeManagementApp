@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -63,6 +64,7 @@ public class RecipeGrid extends AppCompatActivity{
     String theAlarm;
     RecipeDatabaseManager recipeDatabaseManager;
     Cursor recipeData;
+    FloatingActionButton addRecipe;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class RecipeGrid extends AppCompatActivity{
         customDialog=new Dialog(RecipeGrid.this);
         recipeList= new ArrayList<>();
         favoritesList=new ArrayList<>();
+        addRecipe=findViewById(R.id.add_recipe_button);
         count = readSharedPreferenceInt("cntSP","cntKey");
         if(count==0){
             Intent intent = new Intent();
@@ -78,6 +81,15 @@ public class RecipeGrid extends AppCompatActivity{
             count++;
             writeSharedPreference(count,"cntSP","cntKey");
         }
+
+        addRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toAdd=new Intent(RecipeGrid.this, AddRecipe.class);
+                startActivityForResult(toAdd,REQUEST_CODE_ADD_RECIPE);
+            }
+        });
+
 
         grid=findViewById(R.id.recipe_grid);
         nav=findViewById(R.id.nav);
