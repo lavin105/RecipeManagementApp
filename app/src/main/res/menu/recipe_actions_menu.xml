@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_watch"
+        android:icon="@drawable/ic_play"
+        android:title="Watch"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/action_web"
+        android:icon="@drawable/ic_web"
+        android:title="View Online"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share"
+        android:title="Share"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_measure"
+        android:icon="@drawable/ic_converter"
+        android:title="Measure"
+        app:showAsAction="always|withText" />
+
+
+
+
+</menu>
