@@ -54,7 +54,7 @@
             <item
                 android:id="@+id/delete_account_menu"
                 android:orderInCategory="100"
-                android:title="Delete Account"
+                android:title="Delete All"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_delete_account"/>

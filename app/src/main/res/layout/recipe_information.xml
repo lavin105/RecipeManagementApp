@@ -4,120 +4,125 @@
     android:layout_height="wrap_content"
     android:background="#ededed"
     >
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="270dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="17dp"
-        android:src="@drawable/recipe_picture_border"
-       android:id="@+id/the_recipe_picture"/>
-
-
-
-    <TextView
-        android:id="@+id/recipe_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Recipe Title"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="12dp"/>
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="3"
-        android:stepSize="1"
-        android:scaleX="0.9"
-        android:scaleY="0.9"
-        android:layout_gravity="center"
-        android:isIndicator="true"
-        android:id="@+id/the_recipe_rating" />
-    <RadioGroup
-        android:checkedButton="@+id/instructions2"
-        android:id="@+id/toggle2"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginLeft="9dp"
-        android:layout_marginRight="9dp"
-        android:background="@drawable/red_out_line"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        >
+        android:layout_height="wrap_content">
 
-        <RadioButton
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginLeft="1dp"
-            android:id="@+id/instructions2"
-            android:background="@drawable/toggle_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
+        <ImageView
+            android:layout_width="270dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"
+            android:src="@drawable/recipe_picture_border"
+            android:id="@+id/the_recipe_picture"/>
+
+
+
+        <TextView
+            android:id="@+id/recipe_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Cooking Instructions"
-            android:textColor="@color/white" />
-
-        <RadioButton
-            android:layout_marginRight="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:id="@+id/ingredients2"
+            android:text="Recipe Title"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"/>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="3"
+            android:stepSize="1"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            android:layout_gravity="center"
+            android:isIndicator="true"
+            android:id="@+id/the_recipe_rating" />
+        <RadioGroup
+            android:checkedButton="@+id/instructions2"
+            android:id="@+id/toggle2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/toggle_background"
-            android:button="@null"
-            android:gravity="center"
-            android:text="Ingredients"
-            android:textColor="@color/white" />
-    </RadioGroup>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="455dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/black"
-        android:text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati."
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="19sp"
-        android:id="@+id/instruction_description"
-        android:scrollbars = "vertical"
-        android:background="@color/white"
-        android:elevation="3dp"
-        android:nestedScrollingEnabled="true"
+            android:layout_height="30dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:background="@drawable/red_out_line"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            >
 
-        />
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="455dp"
-        android:layout_marginTop="-455dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:id="@+id/ingredients_list"
-        android:visibility="invisible"
-        android:background="@color/white"
-        android:elevation="3dp"
-        android:nestedScrollingEnabled="true"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            <RadioButton
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                android:id="@+id/instructions2"
+                android:background="@drawable/toggle_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:text="Cooking Instructions"
+                android:textColor="@color/white" />
 
-</LinearLayout>
+            <RadioButton
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:id="@+id/ingredients2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_background"
+                android:button="@null"
+                android:gravity="center"
+                android:text="Ingredients"
+                android:textColor="@color/white" />
+        </RadioGroup>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati."
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:id="@+id/instruction_description"
+                android:background="@color/white"
+                android:elevation="3dp"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="445dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/ingredients_list"
+                android:visibility="invisible"
+                android:background="@color/white"
+                android:elevation="3dp"
+                android:nestedScrollingEnabled="true"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
 </ScrollView>
