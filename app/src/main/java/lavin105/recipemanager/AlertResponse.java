@@ -7,7 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
-
+/*AlertResponse is a broadcast receiver that essentially sends a notification when the cooking alarm goes off
+* This alarm is set in Timer.java*/
 public class AlertResponse extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

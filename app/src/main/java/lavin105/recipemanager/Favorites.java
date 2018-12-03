@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/*Favorites.java is an activity that displays the users favorite recipes. Favorites are 3 stars. Favorites can
+* be edited and deleted from this activity as well as the user can search for them using the searchview in the appbar.*/
+
 public class Favorites extends AppCompatActivity {
     SearchView search;
     GridView grid;

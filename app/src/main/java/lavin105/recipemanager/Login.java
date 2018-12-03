@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/*Login.java is currently unused but may be used later if the app expands*/
 public class Login extends Activity {
     Button loginBtn;
     EditText password, email;

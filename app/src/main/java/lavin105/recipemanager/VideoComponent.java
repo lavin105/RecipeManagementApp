@@ -14,6 +14,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+/*VideoComponent is essentially a custom webview that allows for an embedded youtube video.
+* Uses a custom layout to be able to render the video within the application.*/
 
 public class VideoComponent extends AppCompatActivity {
 

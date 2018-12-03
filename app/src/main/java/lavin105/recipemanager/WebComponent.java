@@ -9,6 +9,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+/*Simple webview that loads the recipes link if it has one*/
 
 public class WebComponent extends AppCompatActivity {
     WebView webView;
@@ -23,9 +24,13 @@ public class WebComponent extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
 
+
+
         webView.setWebViewClient(new WebViewClient(){
             @Override public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
+                webView.stopLoading();
+                webView.loadUrl("about:blank");
                 Toast.makeText(WebComponent.this,"Unable to load webpage...",Toast.LENGTH_LONG).show();
             }
         });
@@ -41,4 +46,5 @@ public class WebComponent extends AppCompatActivity {
         }
 
     }
+
 }

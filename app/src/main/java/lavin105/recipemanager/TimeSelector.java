@@ -9,6 +9,7 @@ import android.support.v4.app.DialogFragment;
 
 import java.util.Calendar;
 
+/*Simple class to get the current time using the Calendar object.*/
 public class TimeSelector extends DialogFragment {
 
     @NonNull

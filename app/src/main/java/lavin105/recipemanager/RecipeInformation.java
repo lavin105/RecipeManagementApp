@@ -26,6 +26,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*RecipeInformation.java is an activity that contains the necessary information about a recipe. From this activity the user can
+* launch the youtube video, web url, share the recipe via email, as well as use the measurement converter in case necessary.*/
+
 public class RecipeInformation extends AppCompatActivity {
     RadioGroup switchView2;
     TextView recipeName, recipeInstructions;

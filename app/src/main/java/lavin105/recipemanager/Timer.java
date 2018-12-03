@@ -21,6 +21,10 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+/*Timer.java is an activity that allows the user to set an alarm for their food as well as launch androids default timer
+* so they can manage the cook time in multiple ways. This class ultimately sends a pending notification to AlertResponse as well
+* as uses Time.java to get the proper time.*/
+
 public class Timer extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     Button setTime, cancelAlarm;
     TextView theTime;

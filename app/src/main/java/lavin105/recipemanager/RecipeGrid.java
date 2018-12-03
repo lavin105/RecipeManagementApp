@@ -34,6 +34,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/*RecipeGrid.java is the home page for the application it has a hamburger menu where you can add, view favorits, set the cooking alarm/timer
+* and convert measurements. Uses a gridview to display all the recipes as well as a searchview so the user can find the recipe they are
+* looking for easily. This activity uses the database helper class to add, edit, delete, and query data. This activity is essentially linked to all others
+* it is the hub of the application.*/
+
 public class RecipeGrid extends AppCompatActivity{
     GridView grid;
     ArrayList<Recipe> recipeList;

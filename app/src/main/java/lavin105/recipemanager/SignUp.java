@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/*SignUp.java is currently unused but may be used later if the app expands*/
+
 public class SignUp extends Activity {
     Button signUp;
     EditText email, password;

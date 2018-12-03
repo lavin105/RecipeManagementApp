@@ -2,6 +2,9 @@ package lavin105.recipemanager;
 
 import java.io.Serializable;
 
+/*Recipe.java is the recipe object class used to pass recipes and store them in the database more efficiently.
+* Standard object class with getters and setters*/
+
 public class Recipe implements Serializable {
     String name;
     String image_url;

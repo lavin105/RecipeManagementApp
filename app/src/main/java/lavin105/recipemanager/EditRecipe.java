@@ -22,6 +22,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*EditRecipe is an activity that allows the user to edit an existing recipe. It is essentially a replica of the AddRecipe class
+* without the web scraping functionality. See AddRecipe.java's comments to understand this class more.*/
+
 public class EditRecipe extends AppCompatActivity {
     EditText recipeName,imageLink,webLink,youtubeLink,cookingInstructions,theIngredient;
     Button addRecipe,addIngredient;

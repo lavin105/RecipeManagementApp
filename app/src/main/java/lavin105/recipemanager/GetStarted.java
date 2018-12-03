@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
+/*GetStarted.java is a landing page that is only ran if it is the first time the application is being ran.
+* Uses shared preferences from RecipeGrid.java. The onclick method starts the RecipeGrid activity*/
+
 public class GetStarted extends Activity {
     Button getStarted;
 

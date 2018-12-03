@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/*RecipeDatabaseManager.java is the database helper class used to store recipes into an sqlite database.
+* Database has 8 attributes id, name, image, youtube, web, instructions, ingredients, and rating.
+* There are also methods to add, delete, edit, and query for data.*/
+
 public class RecipeDatabaseManager extends SQLiteOpenHelper {
     public static final String DATABASE_NAME="recipe.db";
     public static final String TABLE_NAME="recipes";

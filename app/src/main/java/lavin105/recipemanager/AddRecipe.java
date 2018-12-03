@@ -25,6 +25,11 @@ import org.jsoup.nodes.Document;
 
 import java.util.ArrayList;
 
+/*AddRecipe.java is in charge of adding a recipe to the database. It uses simple edittexts as well as a listview for
+* ingredients as well as a web scraping component that allows you to input a url and get the text from a website.
+* Web scraping is implemented using jsoup library. Loading data from the web uses an async task in case there is a lot
+* of data to be transfered.*/
+
 public class AddRecipe extends AppCompatActivity {
     EditText recipeName,imageLink,webLink,youtubeLink,cookingInstructions,theIngredient;
     Button addRecipe,addIngredient;

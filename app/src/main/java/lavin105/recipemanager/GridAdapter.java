@@ -14,6 +14,8 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+/*GridAdapter.java is the custom gridview adapter to allow a custom layout with rating text and image.
+* The picasso library is used to pull and render images from the web into the gridview.*/
 
 public class GridAdapter extends BaseAdapter {
 
