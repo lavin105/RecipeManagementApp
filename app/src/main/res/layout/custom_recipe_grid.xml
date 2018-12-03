@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="Recipe"
+            android:text="@string/recipe"
             android:textStyle="normal|italic"
             android:textSize="21sp"
             android:background="#ffffff"

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Recipe Title"
+            android:text="@string/title"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:layout_gravity="center"
@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:gravity="center"
-                android:text="Cooking Instructions"
+                android:text="@string/instructions"
                 android:textColor="@color/white" />
 
             <RadioButton
@@ -77,7 +77,7 @@
                 android:background="@drawable/toggle_background"
                 android:button="@null"
                 android:gravity="center"
-                android:text="Ingredients"
+                android:text="@string/ingredient"
                 android:textColor="@color/white" />
         </RadioGroup>
         <RelativeLayout
@@ -90,7 +90,7 @@
                 android:layout_marginEnd="9dp"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/black"
-                android:text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati."
+                android:text="@string/lorem"
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"

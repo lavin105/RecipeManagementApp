@@ -30,6 +30,39 @@
     <string name="add_ingredient">ADD</string>
     <string name="add_recipe">Add Recipe</string>
     <string name="edit_recipe">Edit Recipe</string>
+    <string name="pull_data">Pull data from a website:</string>
+    <string name="web_data">Web data</string>
+    <string name="time">Time</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="cancel_alarm">Cancel</string>
+    <string name="default_timer">Start Androids Default Timer</string>
+    <string name="start">Start</string>
+    <string name="conversion">Measurement Converter</string>
+    <string name="number">Number</string>
+    <string name="to">to</string>
+    <string name="convert">Convert</string>
+    <string name="result">Result:</string>
+    <string name="recipe">Recipe</string>
+    <string name="get_started">Get Started!</string>
+    <string name="title">Recipe Title</string>
+    <string name="instructions">Cooking Instructions</string>
+    <string name="ingredient">Ingredients</string>
+    <string name="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati.</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

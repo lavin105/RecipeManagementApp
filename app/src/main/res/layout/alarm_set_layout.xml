@@ -18,11 +18,11 @@
             android:layout_gravity="center"
             android:textSize="27sp"
             android:textColor="@color/black"
-            android:hint="Time"/>
+            android:hint="@string/time"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Set Alarm"
+        android:text="@string/set_alarm"
         android:id="@+id/set_alarm"
         android:background="@drawable/signup_button_style"
         android:layout_marginStart="12dp"
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel Alarm"
+        android:text="@string/cancel_alarm"
         android:id="@+id/cancel_alarm"
         android:background="@drawable/smaller_button_style"
         android:layout_gravity="center"
@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start Android's Default Timer"
+            android:text="@string/default_timer"
             android:layout_marginTop="102dp"
             android:textSize="27sp"
             android:gravity="center"
@@ -50,7 +50,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"
+            android:text="@string/start"
             android:id="@+id/default_timer"
             android:background="@drawable/smaller_button_style"
             android:layout_gravity="center"

@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Measurement Converter"
+            android:text="@string/conversion"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:textColor="@color/black"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:hint="Number"
+                android:hint="@string/number"
                 android:textSize="18sp"
                 android:id="@+id/amount">
             </EditText>
@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="to"
+                android:text="@string/to"
                 android:textColor="@color/black"
                 android:layout_marginEnd="4dp"/>
             <Spinner
@@ -72,7 +72,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Convert"
+            android:text="@string/convert"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:background="@drawable/signup_button_style"
@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="23sp"
-            android:text="Result:"
+            android:text="@string/result"
             android:textColor="@color/black"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
