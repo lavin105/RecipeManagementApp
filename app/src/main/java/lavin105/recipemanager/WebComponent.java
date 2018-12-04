@@ -1,9 +1,12 @@
 package lavin105.recipemanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.URLUtil;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -22,7 +25,27 @@ public class WebComponent extends AppCompatActivity {
         Intent i = getIntent();
         String url=i.getStringExtra("url");
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(url);
+
+        boolean load=URLUtil.isValidUrl(url);
+        if(load){
+            webView.loadUrl(url);
+
+        }else{
+            AlertDialog.Builder alert2= new AlertDialog.Builder(WebComponent.this);
+            alert2.setTitle("Unable to load the specified website");
+            alert2.setMessage("Please check that your url is valid.");
+            alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                   finish();
+                }
+            });
+
+
+            final AlertDialog theAlert2=alert2.create();
+            theAlert2.show();
+
+        }
 
 
 

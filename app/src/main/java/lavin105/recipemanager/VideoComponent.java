@@ -1,9 +1,12 @@
 package lavin105.recipemanager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -46,7 +49,27 @@ public class VideoComponent extends AppCompatActivity {
         });
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        myWebView.loadUrl(url);
+        boolean load= URLUtil.isValidUrl(url);
+        if(load){
+            myWebView.loadUrl(url);
+
+        }else{
+            AlertDialog.Builder alert2= new AlertDialog.Builder(VideoComponent.this);
+            alert2.setTitle("Unable to load the specified YouTube video");
+            alert2.setMessage("Please check that your YouTube url is valid.");
+            alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+
+
+            final AlertDialog theAlert2=alert2.create();
+            theAlert2.show();
+
+        }
+
 
         myWebView.setWebViewClient(new WebViewClient(){
             @Override public void onReceivedError(WebView view, WebResourceRequest request,WebResourceError error) {
