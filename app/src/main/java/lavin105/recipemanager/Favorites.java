@@ -50,7 +50,6 @@ public class Favorites extends AppCompatActivity {
         Intent fromHome=getIntent();
         recipeData=recipeDatabaseManager.getFavoritesList();
         if (recipeData.getCount()==0){
-            System.out.println("Database Empty");
             adapter= new GridAdapter(Favorites.this,recipeList);
             grid.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -130,7 +129,6 @@ public class Favorites extends AppCompatActivity {
                                         recipeDatabaseManager.deleteRecipe(recipe);
                                         recipeData=recipeDatabaseManager.getFavoritesList();
                                         if (recipeData.getCount()==0){
-                                            System.out.println("Database Empty");
                                             recipeList.clear();
                                             adapter.notifyDataSetChanged();
                                         }else{
@@ -215,10 +213,8 @@ public class Favorites extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==REQUEST_CODE_EDIT_RECIPE){
             if(resultCode==RESULT_OK){
-                System.out.println("edited");
                 recipeData = recipeDatabaseManager.getFavoritesList();
                 if (recipeData.getCount() == 0) {
-                    System.out.println("Database Empty");
                     recipeList.clear();
                     adapter.notifyDataSetChanged();
                 } else {

@@ -100,7 +100,6 @@ public class RecipeGrid extends AppCompatActivity{
         recipeData=recipeDatabaseManager.getRecipeList();
 
         if (recipeData.getCount()==0){
-            System.out.println("Database Empty");
             adapter= new GridAdapter(RecipeGrid.this,recipeList);
             grid.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -667,7 +666,6 @@ public class RecipeGrid extends AppCompatActivity{
                                         recipeDatabaseManager.deleteRecipe(recipe);
                                         recipeData=recipeDatabaseManager.getRecipeList();
                                         if (recipeData.getCount()==0){
-                                            System.out.println("Database Empty");
                                             recipeList.clear();
                                             adapter.notifyDataSetChanged();
                                         }else{
@@ -780,7 +778,6 @@ public class RecipeGrid extends AppCompatActivity{
                 addData(addedRecipe);
                 recipeData = recipeDatabaseManager.getRecipeList();
                 if (recipeData.getCount() == 0) {
-                    System.out.println("Database Empty");
                     recipeList.clear();
                     adapter.notifyDataSetChanged();
                 } else {
@@ -798,10 +795,8 @@ public class RecipeGrid extends AppCompatActivity{
         }
         if (requestCode==REQUEST_CODE_EDIT_RECIPE){
             if(resultCode==RESULT_OK){
-                System.out.println("edited");
                 recipeData = recipeDatabaseManager.getRecipeList();
                 if (recipeData.getCount() == 0) {
-                    System.out.println("Database Empty");
                     recipeList.clear();
                     adapter.notifyDataSetChanged();
                 } else {
@@ -820,10 +815,8 @@ public class RecipeGrid extends AppCompatActivity{
         }
         if(requestCode==REQUEST_CODE_FAVORITES){
             if (resultCode==RESULT_OK){
-                System.out.println("from favorites");
                 recipeData = recipeDatabaseManager.getRecipeList();
                 if (recipeData.getCount() == 0) {
-                    System.out.println("Database Empty");
                     recipeList.clear();
                     adapter.notifyDataSetChanged();
                 } else {

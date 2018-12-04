@@ -64,13 +64,10 @@ public class RecipeInformation extends AppCompatActivity {
         switchView2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                System.out.println(checkedId);
                 if (checkedId== R.id.instructions2){
-                    System.out.println(checkedId);
                     ingredientsList.setVisibility(View.INVISIBLE);
                     recipeInstructions.setVisibility(View.VISIBLE);
                 }if(checkedId== R.id.ingredients2){
-                    System.out.println(checkedId);
                     ingredientsList.setVisibility(View.VISIBLE);
                     recipeInstructions.setVisibility(View.INVISIBLE);
 
@@ -107,7 +104,6 @@ public class RecipeInformation extends AppCompatActivity {
         ingredientsList.setVisibility(View.INVISIBLE);
         recipeInstructions.setVisibility(View.VISIBLE);
         recipeInstructions.setMovementMethod(new ScrollingMovementMethod());
-        System.out.println(ing);
 
     }
 

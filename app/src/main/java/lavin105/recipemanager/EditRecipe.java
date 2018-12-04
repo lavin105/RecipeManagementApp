@@ -220,7 +220,6 @@ public class EditRecipe extends AppCompatActivity {
                     String csv = csvBuilder.toString();
                     csv = csv.substring(0, csv.length() - SEPARATOR.length());
                     String ingredients=csv;
-                    System.out.println(ingredients);
                     Recipe r = new Recipe(name,picture,youtube,web,instructions,ingredients,rating);
                     recipeDatabaseManager.editRecipe(r,oldInstructions);
 
