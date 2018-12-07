@@ -2,12 +2,14 @@ package lavin105.recipemanager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -67,6 +69,7 @@ public class RecipeGrid extends AppCompatActivity{
     RecipeDatabaseManager recipeDatabaseManager;
     Cursor recipeData;
     FloatingActionButton addRecipe;
+    String substituteQuery;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -598,6 +601,83 @@ public class RecipeGrid extends AppCompatActivity{
                 }
                 if(id==R.id.delete_account_menu){
                     System.out.println("Delete Account");
+
+                }
+                if(id==R.id.substitute){
+                    customDialog.setContentView(R.layout.substitute_popup);
+                    convert =customDialog.findViewById(R.id.convert_units);
+                    theAmount=customDialog.findViewById(R.id.amount);
+                    closePopup=customDialog.findViewById(R.id.close_popup);
+                    theResult=customDialog.findViewById(R.id.result);
+                    final TextView lnk=customDialog.findViewById(R.id.link);
+
+                    closePopup.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            customDialog.dismiss();
+                        }
+                    });
+
+                    convert.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            if(theAmount.getText().toString().toLowerCase().equals("oil")){
+                                theResult.setText("Butter\nMargarine\nApple Sauce\nBanana\nShortening\n");
+                                lnk.setText("Not what you are looking for? Search the web here...");
+                                lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                                lnk.setVisibility(View.VISIBLE);
+                                substituteQuery="Common substitutes for oil";
+                                return;
+
+                            }
+                            if(theAmount.getText().toString().toLowerCase().equals("butter")){
+                                theResult.setText("Greek Yogurt\nNut Butters\nOlive Oil\nBlack Beans\nAvocado\nCoconut Oil\nPumpkin Puree\n");
+                                lnk.setText("Not what you are looking for? Search the web here...");
+                                lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                                lnk.setVisibility(View.VISIBLE);
+                                substituteQuery="Common substitutes for butter";
+                                return;
+
+                            }
+                            if(theAmount.getText().toString().toLowerCase().equals("cream")){
+                                theResult.setText("Milk and Butter\nSoy Milk and Olive Oil\nMilk and Cornstarch\nHalf and Half and Butter\nGreek Yogurt and Milk\n Evaporated Milk\nCoconut Cream\nCream Cheese\n");
+                                lnk.setText("Not what you are looking for? Search the web here...");
+                                lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                                lnk.setVisibility(View.VISIBLE);
+                                substituteQuery="Common substitutes for cream";
+                                return;
+
+                            }
+                            if(theAmount.getText().toString().toLowerCase().equals("cheese")){
+                                theResult.setText("Almmond Cheese\nDaiya Cheese\nCashew Cheese\nNacho Cheese\n Cashew Cream Cheese\n");
+                                lnk.setText("Not what you are looking for? Search the web here...");
+                                lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                                lnk.setVisibility(View.VISIBLE);
+                                substituteQuery="Common substitutes for cheese";
+                                return;
+
+                            }
+                            theResult.setText("We coundnt find any substitutes for you.\n");
+                            lnk.setText("Search the internet for your substitute here...");
+                            lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                            lnk.setVisibility(View.VISIBLE);
+                            substituteQuery="Common substitutes for "+ theAmount.getText().toString();
+                        }
+                    });
+                    lnk.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                            intent.putExtra(SearchManager.QUERY, substituteQuery);
+                            startActivity(intent);
+                        }
+                    });
+                    int width = (int)(getResources().getDisplayMetrics().widthPixels*0.99);
+                    int height = (int)(getResources().getDisplayMetrics().heightPixels*0.50);
+
+                    customDialog.getWindow().setLayout(width, height);
+                    customDialog.show();
 
                 }
                 drawer.closeDrawer(GravityCompat.START);

@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Recipe Manager</string>
+    <string name="app_name">Doctor Recipe</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="to_log_in"><u>Already have an account? Login here</u></string>
-    <string name="sign_up_description">Recipe Manager is the easy way to quickly and easily enter all your favorite recipes and organize them exactly the way you want! Quickly search for your favorite recipes by a simple search. For all you visual learners out there, all our recipes can be  linked to a YouTube video or an official recipe website! Lastly, you have the ability to share all your favorite recipes with anyone you like. Never worry about the unorganized paper recipes laying around your kitchen again, as Recipe Manager provides all the necessary tools to excel in your kitchen!</string>
-    <string name="sign_up_title">Sign Up For Recipe Manager</string>
+    <string name="sign_up_description">Doctor Recipe is the easy way to quickly and easily enter all your favorite recipes and organize them exactly the way you want! Quickly search for your favorite recipes by a simple search. For all you visual learners out there, all our recipes can be  linked to a YouTube video or an official recipe website! Lastly, you have the ability to share all your favorite recipes with anyone you like. Never worry about the unorganized paper recipes laying around your kitchen again, as Doctor Recipe provides all the necessary tools to excel in your kitchen!</string>
+    <string name="sign_up_title">Sign Up For Doctor Recipe</string>
     <string name="please_email"> Please enter an email</string>
     <string name="please_password"> Please enter a password</string>
     <string name="sign_up_button"> Sign Up</string>
@@ -12,8 +12,8 @@
     <string name="log_in_button">Login</string>
     <string name="your_email"> Please enter your email</string>
     <string name="your_password"> Please enter your password</string>
-    <string name="welcome_back">Welcome back to Recipe Manager! Please login below to continue using this app.</string>
-    <string name="login_title">Login to Recipe Manager</string>
+    <string name="welcome_back">Welcome back to Doctor Recipe! Please login below to continue using this app.</string>
+    <string name="login_title">Login to Doctor Recipe</string>
     <string name="recipe_name">Recipe Name:</string>
     <string name="enter_name">Enter Recipe Name Here</string>
     <string name="rating">Rating:</string>
@@ -49,6 +49,7 @@
     <string name="ingredient">Ingredients</string>
     <string name="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit facere, iusto voluptate cupiditate dicta minima? Accusantium amet officia veniam ratione reiciendis voluptate consectetur doloribus similique! Doloremque repellendus asperiores nisi, fugit aliquam eum labore a ullam provident reiciendis dolor pariatur ut rerum iste rem? Deserunt aspernatur perspiciatis quidem suscipit excepturi ullam et vero laudantium culpa officia fuga repudiandae delectus est, vitae dolore officiis necessitatibus, cumque exercitationem veritatis. Tempore id blanditiis totam corporis distinctio eveniet molestias commodi dolores nesciunt modi sed autem cupiditate quisquam, sit perspiciatis saepe excepturi eaque! Obcaecati.</string>
 
+    <string name="search_web"><u>Not what you are looking for? Search the web here...</u></string>
 
 
 

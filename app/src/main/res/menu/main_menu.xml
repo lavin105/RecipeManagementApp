@@ -35,7 +35,15 @@
                 android:title="Set a Cooking Alarm"
                 app:showAsAction="never"
                 android:visible="true"
-                android:icon="@drawable/ic_timer"/></menu>
+                android:icon="@drawable/ic_timer"/>
+            <item
+                android:id="@+id/substitute"
+                android:orderInCategory="100"
+                android:title="Find an Ingredient Substitute"
+                app:showAsAction="never"
+                android:visible="true"
+                android:icon="@drawable/ic_substitute"/>
+        </menu>
     </item>
 
     <item
@@ -51,15 +59,25 @@
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_logout"/>
+
+        </menu>
+    </item>
+    <item
+        android:orderInCategory="100"
+        android:title="Danger Zone"
+        app:showAsAction="never"
+        android:visible="true" >
+        <menu>
             <item
                 android:id="@+id/delete_account_menu"
                 android:orderInCategory="100"
-                android:title="Delete All"
+                android:title="Delete All Recipes"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_delete_account"/>
         </menu>
     </item>
+
 
 
 </menu>
