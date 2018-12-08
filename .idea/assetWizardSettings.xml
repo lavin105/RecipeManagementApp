@@ -33,9 +33,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_substitute" />
+                                      <entry key="outputName" value="ic_substitute_white" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="000000" />
+                                      <entry key="themeColor" value="ffffff" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -64,14 +64,19 @@
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ff0000" />
                                       <entry key="backgroundLayerName" value="ic_hat2" />
-                                      <entry key="foregroundImage" value="C:\Users\Blavin\Desktop\chef_hat.png" />
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
                                       <entry key="foregroundLayerName" value="ic_hat1" />
-                                      <entry key="outputName" value="ic_chefhat" />
+                                      <entry key="outputName" value="ic_play_white" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
