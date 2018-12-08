@@ -54,8 +54,19 @@ public class WebComponent extends AppCompatActivity {
                 super.onReceivedError(view, request, error);
                 webView.stopLoading();
                 webView.loadUrl("about:blank");
-                Toast.makeText(WebComponent.this,"Unable to load webpage...",Toast.LENGTH_LONG).show();
-            }
+                AlertDialog.Builder alert2= new AlertDialog.Builder(WebComponent.this);
+                alert2.setTitle("Unable to load the specified website");
+                alert2.setMessage("Please check your connection.");
+                alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+
+                final AlertDialog theAlert2=alert2.create();
+                theAlert2.show();            }
         });
 
     }

@@ -65,6 +65,7 @@ public class GridAdapter extends BaseAdapter {
                         .load(r.get(position).getImage_url())
                         .error(R.drawable.recipe_manager_logo)
                         .fit()
+                        .centerInside()
                         .into(picture, new Callback() {
                             @Override
                             public void onSuccess() {

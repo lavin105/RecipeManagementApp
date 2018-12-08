@@ -96,6 +96,7 @@ public class RecipeInformation extends AppCompatActivity {
                     .load(theRecipe.getImage_url())
                     .error(R.drawable.recipe_manager_logo)
                     .fit()
+                    .centerInside()
                     .into(recipePicture);
         }
 
@@ -211,6 +212,15 @@ public class RecipeInformation extends AppCompatActivity {
                         return;
 
                     }
+                    if(theAmount.getText().toString().toLowerCase().equals("sugar")||theAmount.getText().toString().toLowerCase().equals("cane sugar")){
+                        theResult.setText("Agave Nectar\nMaple Syrup\nLemon\nHoney\nApplesauce\nErythritol\nRaisins\nCinnamon\nStevia\n");
+                        lnk.setText("Not what you are looking for? Search the web here...");
+                        lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                        lnk.setVisibility(View.VISIBLE);
+                        substituteQuery="Common substitutes for sugar";
+                        return;
+
+                    }
                     theResult.setText("We coundnt find any substitutes for you.\n");
                     lnk.setText("Search the internet for your substitute here...");
                     lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
@@ -227,7 +237,7 @@ public class RecipeInformation extends AppCompatActivity {
                 }
             });
             int width = (int)(getResources().getDisplayMetrics().widthPixels*0.99);
-            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.50);
+            int height = (int)(getResources().getDisplayMetrics().heightPixels*0.55);
 
             customDialog.getWindow().setLayout(width, height);
             customDialog.show();

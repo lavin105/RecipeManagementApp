@@ -74,8 +74,21 @@ public class VideoComponent extends AppCompatActivity {
         myWebView.setWebViewClient(new WebViewClient(){
             @Override public void onReceivedError(WebView view, WebResourceRequest request,WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                Toast.makeText(VideoComponent.this,"Unable to load video...",Toast.LENGTH_LONG).show();
-            }
+                myWebView.stopLoading();
+                myWebView.loadUrl("about:blank");
+                AlertDialog.Builder alert2= new AlertDialog.Builder(VideoComponent.this);
+                alert2.setTitle("Unable to load the specified website");
+                alert2.setMessage("Please check your connection.");
+                alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+
+                final AlertDialog theAlert2=alert2.create();
+                theAlert2.show();            }
         });
     }
 

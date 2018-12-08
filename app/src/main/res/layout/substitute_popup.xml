@@ -86,7 +86,8 @@
             android:layout_height="wrap_content"
             android:textColor="#1880ff"
             android:visibility="invisible"
-            android:id="@+id/link"/>
+            android:id="@+id/link"
+            android:textSize="16sp"/>
     </LinearLayout>
 
 </RelativeLayout>
