@@ -1,6 +1,7 @@
 package lavin105.recipemanager;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,7 +19,15 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 Intent i = new Intent(SplashScreen.this, RecipeGrid.class);
                 startActivity(i);
-                finish();
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+
+                }else{
+                    finish();
+
+                }
+
             }
         },TIME);
     }
