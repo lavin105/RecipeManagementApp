@@ -5,27 +5,27 @@
     <item
         android:id="@+id/action_watch"
         android:icon="@drawable/ic_play_white"
-        android:title="Watch"
+        android:title="@string/watch"
         app:showAsAction="always"/>
     <item
         android:id="@+id/action_web"
         android:icon="@drawable/ic_web_white"
-        android:title="View Online"
+        android:title="@string/online"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_share"
         android:icon="@drawable/ic_share_white"
-        android:title="Share"
+        android:title="@string/share"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_measure"
         android:icon="@drawable/ic_converter_white"
-        android:title="Measure"
+        android:title="@string/measure"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_substitute"
         android:icon="@drawable/ic_substitute_white"
-        android:title="Substitute"
+        android:title="@string/sub"
         app:showAsAction="always"/>
 
 
