@@ -63,7 +63,7 @@ public class GridAdapter extends BaseAdapter {
 
                 Picasso.get()
                         .load(r.get(position).getImage_url())
-                        .error(R.drawable.recipe_manager_logo)
+                        .error(R.drawable.recipe_whiz)
                         .fit()
                         .centerInside()
                         .into(picture, new Callback() {

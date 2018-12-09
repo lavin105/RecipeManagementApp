@@ -94,7 +94,7 @@ public class RecipeInformation extends AppCompatActivity {
         }else {
             Picasso.get()
                     .load(theRecipe.getImage_url())
-                    .error(R.drawable.recipe_manager_logo)
+                    .error(R.drawable.recipe_whiz)
                     .fit()
                     .centerInside()
                     .into(recipePicture);

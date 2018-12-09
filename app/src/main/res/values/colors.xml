@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="red">#D9372F</color>
     <color name="dark_red">#a3241d</color>
+    <color name="solid_red">#ff0000</color>
+
     <color name="transparent">#a2919191</color>
 
     <color name="rose">#B48E8D</color>
