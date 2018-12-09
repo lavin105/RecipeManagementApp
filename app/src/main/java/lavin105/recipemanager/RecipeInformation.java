@@ -221,6 +221,42 @@ public class RecipeInformation extends AppCompatActivity {
                         return;
 
                     }
+                    if(theAmount.getText().toString().toLowerCase().equals("meat")||theAmount.getText().toString().toLowerCase().equals("meats")){
+                        theResult.setText("Eggplant\nMushrooms\nTofu\nSeitan\nLentils\nBeans\nTempeh\nJackfruit\n");
+                        lnk.setText("Not what you are looking for? Search the web here...");
+                        lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                        lnk.setVisibility(View.VISIBLE);
+                        substituteQuery="Common substitutes for meat";
+                        return;
+
+                    }
+                    if(theAmount.getText().toString().toLowerCase().equals("peanuts")||theAmount.getText().toString().toLowerCase().equals("peanut")){
+                        theResult.setText("Cashews\nAlmonds\nWalnuts\nFilberts\nBrazil Nuts\nMacadamia Nuts\n");
+                        lnk.setText("Not what you are looking for? Search the web here...");
+                        lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                        lnk.setVisibility(View.VISIBLE);
+                        substituteQuery="Common substitutes for peanuts";
+                        return;
+
+                    }
+                    if(theAmount.getText().toString().toLowerCase().equals("flour")||theAmount.getText().toString().toLowerCase().equals("white flour")){
+                        theResult.setText("Almond flour\nCoconut flour\nQuinoa flour\nChickpea flour\nBrown rice flour\n");
+                        lnk.setText("Not what you are looking for? Search the web here...");
+                        lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                        lnk.setVisibility(View.VISIBLE);
+                        substituteQuery="Common substitutes for flour";
+                        return;
+
+                    }
+                    if(theAmount.getText().toString().toLowerCase().equals("egg")||theAmount.getText().toString().toLowerCase().equals("eggs")){
+                        theResult.setText("Applesauce\nMashed Banana\nGround Flaxseeds\nChia Seeds\nSilken Tofu\nYogurt\nButtermilk\nArrowroot Powder\n");
+                        lnk.setText("Not what you are looking for? Search the web here...");
+                        lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+                        lnk.setVisibility(View.VISIBLE);
+                        substituteQuery="Common substitutes for eggs";
+                        return;
+
+                    }
                     theResult.setText("We coundnt find any substitutes for you.\n");
                     lnk.setText("Search the internet for your substitute here...");
                     lnk.setPaintFlags(lnk.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
