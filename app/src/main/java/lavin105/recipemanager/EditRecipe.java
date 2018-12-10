@@ -231,7 +231,6 @@ public class EditRecipe extends AppCompatActivity {
                     }
 
                     Intent giveRecipe = new Intent();
-
                     setResult(RESULT_OK,giveRecipe);
                     finish();
 

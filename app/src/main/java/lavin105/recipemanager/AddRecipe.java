@@ -245,12 +245,6 @@ public class AddRecipe extends AppCompatActivity {
                     String csv = csvBuilder.toString();
                     csv = csv.substring(0, csv.length() - SEPARATOR.length());
                     String ingredients=csv;
-//                    name= DatabaseUtils.sqlEscapeString(name);
-//                    picture=DatabaseUtils.sqlEscapeString(picture);
-//                    youtube=DatabaseUtils.sqlEscapeString(youtube);
-//                    web=DatabaseUtils.sqlEscapeString(web);
-//                    instructions=DatabaseUtils.sqlEscapeString(instructions);
-//                    ingredients=DatabaseUtils.sqlEscapeString(ingredients);
                     Recipe r = new Recipe(name,picture,youtube,web,instructions,ingredients,rating);
                     Intent giveRecipe = new Intent();
                     giveRecipe.putExtra("recipe",r);
