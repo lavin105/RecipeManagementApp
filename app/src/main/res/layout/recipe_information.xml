@@ -86,6 +86,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="440dp"
                 android:layout_marginStart="9dp"
                 android:layout_marginEnd="9dp"
                 android:layout_marginTop="12dp"
@@ -101,7 +102,7 @@
                 android:elevation="3dp"/>
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="445dp"
+                android:layout_height="440dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"

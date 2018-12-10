@@ -3,6 +3,8 @@ package lavin105.recipemanager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.DatabaseUtils;
+import android.database.SQLException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -75,7 +77,7 @@ public class EditRecipe extends AppCompatActivity {
         webLink.setText(recipe.getWeb_url());
         youtubeLink.setText(recipe.getYoutube_url());
         cookingInstructions.setText(recipe.getInstructions());
-        String ing=recipe.getIngredients();
+        final String ing=recipe.getIngredients();
         String[] ingred=ing.split(",");
         ingredientsArrayList=new ArrayList<>(Arrays.asList(ingred));
         adapter=new ArrayAdapter<>(EditRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
@@ -221,11 +223,15 @@ public class EditRecipe extends AppCompatActivity {
                     csv = csv.substring(0, csv.length() - SEPARATOR.length());
                     String ingredients=csv;
                     Recipe r = new Recipe(name,picture,youtube,web,instructions,ingredients,rating);
-                    recipeDatabaseManager.editRecipe(r,oldInstructions);
+                    try {
+                        recipeDatabaseManager.editRecipe(r,oldInstructions);
+
+                    }catch (SQLException e){
+                        Toast.makeText(EditRecipe.this,"Unable to edit the Recipe...",Toast.LENGTH_SHORT).show();
+                    }
 
                     Intent giveRecipe = new Intent();
-                    //giveRecipe.putExtra("recipe",r);
-                    //giveRecipe.putExtra("index",position);
+
                     setResult(RESULT_OK,giveRecipe);
                     finish();
 

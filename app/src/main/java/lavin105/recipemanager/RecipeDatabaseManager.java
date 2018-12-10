@@ -1,10 +1,10 @@
 package lavin105.recipemanager;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 /*RecipeDatabaseManager.java is the database helper class used to store recipes into an sqlite database.
 * Database has 8 attributes id, name, image, youtube, web, instructions, ingredients, and rating.
@@ -39,23 +39,17 @@ public class RecipeDatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public boolean addRecipe(Recipe r){
+    public void addRecipe(Recipe r){
         SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL1, r.getName());
-        contentValues.put(COL2, r.getImage_url());
-        contentValues.put(COL3, r.getYoutube_url());
-        contentValues.put(COL4, r.getWeb_url());
-        contentValues.put(COL5, r.getInstructions());
-        contentValues.put(COL6, r.getIngredients());
-        contentValues.put(COL7, r.getRating());
-
-        long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result==-1){
-            return false;
-        }else{
-            return true;
-        }
+        SQLiteStatement stmt = db.compileStatement("INSERT INTO recipes(NAME,IMAGE,YOUTUBE,WEB,INSTRUCTIONS,INGREDIENTS,RATING) VALUES(?,?,?,?,?,?,?)");
+        stmt.bindString(1, r.getName());
+        stmt.bindString(2, r.getImage_url());
+        stmt.bindString(3, r.getYoutube_url());
+        stmt.bindString(4, r.getWeb_url());
+        stmt.bindString(5, r.getInstructions());
+        stmt.bindString(6, r.getIngredients());
+        stmt.bindDouble(7,Double.valueOf(r.getRating()));
+        stmt.execute();
 
 
     }
@@ -73,15 +67,23 @@ public class RecipeDatabaseManager extends SQLiteOpenHelper {
 
     public void deleteRecipe(Recipe r){
         SQLiteDatabase db=this.getWritableDatabase();
-        String query ="DELETE FROM "+TABLE_NAME+" WHERE "+COL5+" = '"+r.getInstructions()+"'";
-        db.execSQL(query);
-
+        SQLiteStatement stmt = db.compileStatement("DELETE FROM recipes WHERE INSTRUCTIONS = ?");
+        stmt.bindString(1, r.getInstructions());
+        stmt.execute();
     }
 
     public void editRecipe(Recipe r, String oldInstructions){
         SQLiteDatabase db=this.getWritableDatabase();
-        String query="UPDATE "+ TABLE_NAME + " SET "+ COL1 + " = '"+r.getName()+"' ,"+COL2+"= '"+r.getImage_url()+"' ,"+COL3+"= '"+r.getYoutube_url()+"' ,"+COL4+"= '"+r.getWeb_url()+"' ,"+COL5+"= '"+r.getInstructions()+"' ,"+COL6+"= '"+r.getIngredients()+"' ,"+COL7+"= "+r.getRating()+ " WHERE " + COL5 + " = '"+oldInstructions+"'";
-        db.execSQL(query);
+        SQLiteStatement stmt = db.compileStatement("UPDATE recipes SET NAME=?,IMAGE=?,YOUTUBE=?,WEB=?,INSTRUCTIONS=?,INGREDIENTS=?,RATING=? WHERE INSTRUCTIONS=?");
+        stmt.bindString(1, r.getName());
+        stmt.bindString(2, r.getImage_url());
+        stmt.bindString(3, r.getYoutube_url());
+        stmt.bindString(4, r.getWeb_url());
+        stmt.bindString(5, r.getInstructions());
+        stmt.bindString(6, r.getIngredients());
+        stmt.bindDouble(7,Double.valueOf(r.getRating()));
+        stmt.bindString(8, oldInstructions);
+        stmt.execute();
 
     }
 

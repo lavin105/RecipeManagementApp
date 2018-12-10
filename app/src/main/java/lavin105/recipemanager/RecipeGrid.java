@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -821,7 +822,14 @@ public class RecipeGrid extends AppCompatActivity{
                                 alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        recipeDatabaseManager.deleteRecipe(recipe);
+                                        try{
+                                            recipeDatabaseManager.deleteRecipe(recipe);
+                                            Toast.makeText(RecipeGrid.this,"Recipe Deleted...",Toast.LENGTH_SHORT).show();
+
+
+                                        }catch(SQLException e){
+                                            Toast.makeText(RecipeGrid.this,"Unable to delete recipe...",Toast.LENGTH_SHORT).show();
+                                        }
                                         recipeData=recipeDatabaseManager.getRecipeList();
                                         if (recipeData.getCount()==0){
                                             recipeList.clear();
@@ -998,11 +1006,10 @@ public class RecipeGrid extends AppCompatActivity{
 
     }
     public void addData(Recipe r){
-        boolean insertData=recipeDatabaseManager.addRecipe(r);
-        if (insertData==true){
-            Toast.makeText(RecipeGrid.this,"Recipe was successfully added!",Toast.LENGTH_SHORT).show();
+        try{
+            recipeDatabaseManager.addRecipe(r);
 
-        }else{
+        }catch (SQLException e){
             Toast.makeText(RecipeGrid.this,"Your recipe was not added, something must have gone wrong please try again",Toast.LENGTH_SHORT).show();
 
         }

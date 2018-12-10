@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -126,8 +127,14 @@ public class Favorites extends AppCompatActivity {
                                 alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        recipeDatabaseManager.deleteRecipe(recipe);
-                                        recipeData=recipeDatabaseManager.getFavoritesList();
+                                        try{
+                                            recipeDatabaseManager.deleteRecipe(recipe);
+                                            Toast.makeText(Favorites.this,"Recipe Deleted...",Toast.LENGTH_SHORT).show();
+
+
+                                        }catch(SQLException e){
+                                            Toast.makeText(Favorites.this,"Unable to delete recipe...",Toast.LENGTH_SHORT).show();
+                                        }                                        recipeData=recipeDatabaseManager.getFavoritesList();
                                         if (recipeData.getCount()==0){
                                             recipeList.clear();
                                             adapter.notifyDataSetChanged();
