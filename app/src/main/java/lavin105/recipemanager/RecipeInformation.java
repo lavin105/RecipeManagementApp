@@ -151,7 +151,7 @@ public class RecipeInformation extends AppCompatActivity {
             for(int i=0;i<breakup.length;i++){
                 message+=breakup[i]+"\n";
             }
-            message+="\n\n\n"+"Youtube Link:\n\n"+theRecipe.getYoutube_url()+"\n\n"+"Web Link:\n\n"+theRecipe.getWeb_url()+"\n\n\n\n\nThis email was provided to you by RecipeManager";
+            message+="\n\n\n"+"Youtube Link:\n\n"+theRecipe.getYoutube_url()+"\n\n"+"Web Link:\n\n"+theRecipe.getWeb_url()+"\n\n\n\n\nThis email was provided to you by Recipe Whiz";
 
             share.putExtra(Intent.EXTRA_TEXT,message);
             share.setType("message/rfc822");
