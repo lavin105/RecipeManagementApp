@@ -55,6 +55,7 @@ public class GridAdapter extends BaseAdapter {
         TextView recipe=(TextView) gridview.findViewById(R.id.recipe);
         RatingBar theRating=(RatingBar) gridview.findViewById(R.id.ratingBar);
         recipe.setText(r.get(position).getName());
+        recipe.setSelected(true);
         theRating.setRating(r.get(position).getRating());
 
         if(r.get(position).getImage_url().equals("")){

@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/recipe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/recipe"
@@ -25,7 +25,13 @@
             android:textSize="21sp"
             android:background="#ffffff"
             android:layout_marginBottom="8dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit ="marquee_forever"/>
 
         <ImageView
             android:id="@+id/icon"
