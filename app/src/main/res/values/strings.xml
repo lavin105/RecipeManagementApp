@@ -57,6 +57,23 @@
     <string name="measure">Measure</string>
     <string name="sub">Substitute</string>
 
+    <string name="edit_ingred">Edit Ingredient</string>
+    <string name="delete_ingred">Delete Ingredient</string>
+
+    <string name="edit_rec">Edit Recipe</string>
+    <string name="delete_rec">Delete Recipe</string>
+
+    <string name="what">What to do?</string>
+    <string name="add_personal">Add a New Recipe</string>
+    <string name="favorites">View Your Favorites</string>
+    <string name="con">Convert a Measurement</string>
+    <string name="alarm">Set a Cooking Alarm</string>
+    <string name="subs">Find an Ingredient Substitute</string>
+    <string name="acnt">Your Account</string>
+    <string name="lve">Leave</string>
+    <string name="danger">Danger Zone</string>
+    <string name="del_all">Delete All Recipes</string>
+    <string name="srch">Search</string>
 
 
 

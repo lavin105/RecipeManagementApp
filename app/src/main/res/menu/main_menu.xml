@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:orderInCategory="100"
-        android:title="What to do?"
+        android:title="@string/what"
         app:showAsAction="never"
         android:visible="true"
         >
         <menu><item
             android:id="@+id/add_menu"
             android:orderInCategory="100"
-            android:title="Add a Personal Recipe"
+            android:title="@string/add_personal"
             app:showAsAction="never"
             android:visible="true"
             android:icon="@drawable/ic_add"
@@ -18,28 +18,28 @@
             <item
                 android:id="@+id/favorites_menu"
                 android:orderInCategory="100"
-                android:title="View your Favorites"
+                android:title="@string/favorites"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_star"/>
             <item
                 android:id="@+id/conversion"
                 android:orderInCategory="100"
-                android:title="Convert a Measurement"
+                android:title="@string/con"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_converter"/>
             <item
                 android:id="@+id/cook_timer"
                 android:orderInCategory="100"
-                android:title="Set a Cooking Alarm"
+                android:title="@string/alarm"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_timer"/>
             <item
                 android:id="@+id/substitute"
                 android:orderInCategory="100"
-                android:title="Find an Ingredient Substitute"
+                android:title="@string/subs"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_substitute"/>
@@ -48,14 +48,14 @@
 
     <item
         android:orderInCategory="100"
-        android:title="Your Account"
+        android:title="@string/acnt"
         app:showAsAction="never"
         android:visible="true" >
         <menu>
             <item
                 android:id="@+id/logout_menu"
                 android:orderInCategory="100"
-                android:title="Leave"
+                android:title="@string/lve"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_logout"/>
@@ -64,14 +64,14 @@
     </item>
     <item
         android:orderInCategory="100"
-        android:title="Danger Zone"
+        android:title="@string/danger"
         app:showAsAction="never"
         android:visible="true" >
         <menu>
             <item
                 android:id="@+id/delete_account_menu"
                 android:orderInCategory="100"
-                android:title="Delete All Recipes"
+                android:title="@string/del_all"
                 app:showAsAction="never"
                 android:visible="true"
                 android:icon="@drawable/ic_delete_account"/>

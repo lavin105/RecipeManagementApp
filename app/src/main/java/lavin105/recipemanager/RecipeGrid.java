@@ -600,7 +600,40 @@ public class RecipeGrid extends AppCompatActivity{
                     finish();
                 }
                 if(id==R.id.delete_account_menu){
-                    System.out.println("Delete Account");
+                    AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
+                    alert2.setTitle("DANGER ZONE! You are about to delete all of your recipes");
+                    alert2.setMessage("Are you absolutely sure you wish to delete all recipes?");
+                    alert2.setPositiveButton("Delete All", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            recipeDatabaseManager.deleteAll();
+                            recipeData=recipeDatabaseManager.getRecipeList();
+                            if (recipeData.getCount()==0){
+                                recipeList.clear();
+                                adapter.notifyDataSetChanged();
+                            }else{
+                                recipeList.clear();
+                                while (recipeData.moveToNext()){
+                                    Recipe r= new Recipe(recipeData.getString(1),recipeData.getString(2),recipeData.getString(3),recipeData.getString(4),recipeData.getString(5),recipeData.getString(6),recipeData.getInt(7));
+                                    recipeList.add(r);
+                                    adapter= new GridAdapter(RecipeGrid.this,recipeList);
+                                    grid.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+
+                                }
+
+                            }
+                        }
+                    });
+                    alert2.setNegativeButton("Abort", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    final AlertDialog theAlert2=alert2.create();
+                    theAlert2.show();
 
                 }
                 if(id==R.id.substitute){

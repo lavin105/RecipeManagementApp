@@ -85,5 +85,8 @@ public class RecipeDatabaseManager extends SQLiteOpenHelper {
 
     }
 
-
+    public void deleteAll(){
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.execSQL("delete from "+ TABLE_NAME);
+    }
 }
