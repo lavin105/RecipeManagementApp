@@ -54,7 +54,8 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:textSize="18sp"
-            android:id="@+id/name_of_recipe"/>
+            android:id="@+id/name_of_recipe"
+            android:singleLine="true"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +96,8 @@
                 android:layout_width="0dp"
                 android:hint="@string/image_link_here"
                 android:textSize="18sp"
-                android:id="@+id/image_of_recipe">
+                android:id="@+id/image_of_recipe"
+                android:singleLine="true">
             </EditText>
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"

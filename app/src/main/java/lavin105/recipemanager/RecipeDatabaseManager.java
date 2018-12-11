@@ -67,8 +67,9 @@ public class RecipeDatabaseManager extends SQLiteOpenHelper {
 
     public void deleteRecipe(Recipe r){
         SQLiteDatabase db=this.getWritableDatabase();
-        SQLiteStatement stmt = db.compileStatement("DELETE FROM recipes WHERE INSTRUCTIONS = ?");
+        SQLiteStatement stmt = db.compileStatement("DELETE FROM recipes WHERE INSTRUCTIONS = ? AND INGREDIENTS=?");
         stmt.bindString(1, r.getInstructions());
+        stmt.bindString(2, r.getIngredients());
         stmt.execute();
     }
 
