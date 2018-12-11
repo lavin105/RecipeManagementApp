@@ -31,11 +31,12 @@
             android:singleLine="true"
             android:scrollHorizontally="true"
             android:ellipsize="marquee"
-            android:marqueeRepeatLimit ="marquee_forever"/>
+            android:marqueeRepeatLimit ="marquee_forever"
+            android:textColor="@color/black"/>
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="115dp"
+            android:layout_width="135dp"
             android:layout_height="103dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="false"

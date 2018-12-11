@@ -66,7 +66,7 @@ public class GridAdapter extends BaseAdapter {
                         .load(r.get(position).getImage_url())
                         .error(R.drawable.recipe_whiz)
                         .fit()
-                        .centerInside()
+                        .centerCrop()
                         .into(picture, new Callback() {
                             @Override
                             public void onSuccess() {

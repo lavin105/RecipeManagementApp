@@ -96,7 +96,7 @@ public class RecipeInformation extends AppCompatActivity {
                     .load(theRecipe.getImage_url())
                     .error(R.drawable.recipe_whiz)
                     .fit()
-                    .centerInside()
+                    .centerCrop()
                     .into(recipePicture);
         }
 
