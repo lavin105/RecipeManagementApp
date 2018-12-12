@@ -11,7 +11,6 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         >
-
         <TextView
             android:id="@+id/recipe"
             android:layout_width="match_parent"
@@ -23,7 +22,7 @@
             android:textSize="21sp"
             android:background="@drawable/border"
             android:gravity="start"
-            android:paddingStart="7dp"
+            android:paddingStart="9dp"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:singleLine="true"
@@ -49,7 +48,7 @@
             android:elevation="10dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginEnd="-40dp"
+            android:layout_marginEnd="-37dp"
             android:layout_marginBottom="-7dp"
             />
 
@@ -59,11 +58,6 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="false"
-
             />
-
-
-
-
     </RelativeLayout>
 </LinearLayout>
