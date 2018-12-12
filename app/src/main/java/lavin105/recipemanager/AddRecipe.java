@@ -78,11 +78,16 @@ public class AddRecipe extends AppCompatActivity {
         addIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ingredientsArrayList.add(theIngredient.getText().toString());
-                adapter=new ArrayAdapter<>(AddRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
-                ingredinetsList.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
-                theIngredient.setText(null);
+                if(theIngredient.getText().toString().equals("")){
+                    Toast.makeText(AddRecipe.this,"Please type in an ingredient",Toast.LENGTH_SHORT).show();
+                }else{
+                    ingredientsArrayList.add(theIngredient.getText().toString());
+                    adapter=new ArrayAdapter<>(AddRecipe.this,android.R.layout.simple_list_item_1,ingredientsArrayList);
+                    ingredinetsList.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    theIngredient.setText(null);
+                }
+
 
             }
         });
