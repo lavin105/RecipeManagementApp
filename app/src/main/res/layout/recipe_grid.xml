@@ -18,6 +18,7 @@
             android:horizontalSpacing="0dp"
             android:numColumns="auto_fit"
             android:verticalSpacing="0dp"
+            android:columnWidth="300dp"
 
             />
 
