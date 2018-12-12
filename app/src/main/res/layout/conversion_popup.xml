@@ -49,7 +49,8 @@
                 android:hint="@string/number"
                 android:textSize="18sp"
                 android:id="@+id/amount"
-                android:inputType="number">
+                android:inputType="numberDecimal"
+                android:digits="0123456789.">
             </EditText>
             <Spinner
                 android:layout_width="wrap_content"
