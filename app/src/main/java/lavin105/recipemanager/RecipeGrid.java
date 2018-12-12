@@ -941,7 +941,13 @@ public class RecipeGrid extends AppCompatActivity{
         if (requestCode==REQUEST_CODE_ADD_RECIPE){
             if (resultCode==RESULT_OK){
                 Recipe addedRecipe=(Recipe)data.getSerializableExtra("recipe");
-                addData(addedRecipe);
+                try{
+                    addData(addedRecipe);
+                    Toast.makeText(RecipeGrid.this,"Recipe Successfully Added",Toast.LENGTH_SHORT).show();
+                }catch (SQLException e){
+                    Toast.makeText(RecipeGrid.this,"Recipe was not saved...",Toast.LENGTH_SHORT).show();
+
+                }
                 recipeData = recipeDatabaseManager.getRecipeList();
                 if (recipeData.getCount() == 0) {
                     recipeList.clear();
@@ -955,7 +961,7 @@ public class RecipeGrid extends AppCompatActivity{
                         grid.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                     }
-
+                    grid.smoothScrollToPosition(adapter.getCount()-1);
                 }
             }
         }
