@@ -108,7 +108,7 @@ public class RecipeGrid extends AppCompatActivity{
             grid.setAdapter(adapter);
             adapter.notifyDataSetChanged();
             AlertDialog.Builder alert2= new AlertDialog.Builder(RecipeGrid.this);
-            alert2.setTitle("Welcome to RecipeManager you currently have no recipes!");
+            alert2.setTitle("Welcome to Recipe Whiz you currently have no recipes!");
             alert2.setMessage("Would you like to add one now?");
             alert2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override

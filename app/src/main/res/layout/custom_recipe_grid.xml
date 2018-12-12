@@ -6,10 +6,9 @@
 
     <RelativeLayout
         android:id="@+id/gridviewdata"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:background="#ffffff"
-        android:layout_height="250dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         >
 
@@ -22,7 +21,7 @@
             android:text="@string/recipe"
             android:textStyle="normal|italic"
             android:textSize="21sp"
-            android:background="#ffffff"
+            android:background="@drawable/border"
             android:gravity="start"
             android:paddingStart="7dp"
             android:focusable="false"

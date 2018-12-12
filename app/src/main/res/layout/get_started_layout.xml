@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Welcome to RecipeManager!"
+            android:text="Welcome to Recipe Whiz!"
             android:textColor="@color/white"
             android:textSize="26sp" />
         <de.hdodenhof.circleimageview.CircleImageView
@@ -24,7 +24,7 @@
             android:id="@+id/profile_image"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:src="@drawable/recipe_manager_logo"
+            android:src="@drawable/recipe_whiz"
             app:civ_border_color="@color/white"
             app:civ_border_width="3dp"
             android:layout_marginTop="12dp"

@@ -15,10 +15,10 @@
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:horizontalSpacing="1dp"
+            android:horizontalSpacing="0dp"
             android:numColumns="auto_fit"
-            android:verticalSpacing="6dp"
-            android:columnWidth="280dp"
+            android:verticalSpacing="0dp"
+
             />
 
         <android.support.design.widget.FloatingActionButton
