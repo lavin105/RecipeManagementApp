@@ -6,56 +6,64 @@
 
     <RelativeLayout
         android:id="@+id/gridviewdata"
-        android:layout_width="185dp"
-        android:background="@drawable/border"
-        android:layout_height="180dp"
-        android:elevation="9dp"
+        android:layout_width="280dp"
+        android:background="#ffffff"
+        android:layout_height="250dp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="9.5dp"
+        android:layout_gravity="center"
         >
 
         <TextView
             android:id="@+id/recipe"
             android:layout_width="match_parent"
-            android:layout_height="29dp"
+            android:layout_height="35dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:text="@string/recipe"
             android:textStyle="normal|italic"
             android:textSize="21sp"
             android:background="#ffffff"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
+            android:gravity="start"
+            android:paddingStart="7dp"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:singleLine="true"
             android:scrollHorizontally="true"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit ="marquee_forever"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:elevation="10dp"
+
+            />
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:numStars="3"
+            android:layout_alignParentEnd="true"
+            android:rating="1"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:stepSize="1.0"
+            android:isIndicator="true"
+            android:visibility="visible"
+            android:elevation="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="-40dp"
+            android:layout_marginBottom="-7dp"
+            />
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="135dp"
-            android:layout_height="103dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="false"
-            android:layout_marginTop="5dp"
+
             />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="149dp"
-            android:layout_height="42dp"
-            android:layout_above="@+id/recipe"
-            android:layout_centerHorizontal="true"
-            android:numStars="3"
-            android:rating="1"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
-            android:stepSize="1.0"
-            android:isIndicator="true"
-            />
+
 
 
     </RelativeLayout>
